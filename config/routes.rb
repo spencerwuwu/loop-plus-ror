@@ -1,3 +1,15 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :users
+  mount Ckeditor::Engine => '/ckeditor'
+  root to: 'front/pages#index'
+
+  # scope for removing '/head' in the path
+  scope module: "head" do
+
+  end
+
+  namespace :admin do
+
+  end
+
 end

@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    title #{content_for(:title)} | LOOP+
+    = csrf_meta_tags 
+
+    = stylesheet_link_tag    'front', media: 'all'
+    = javascript_include_tag 'front'
+
+  body
+    .body-container
+      = render(partial: 'front/partials/header')
+      main.main
+        = yield 
+      = render(partial: 'front/partials/footer')
