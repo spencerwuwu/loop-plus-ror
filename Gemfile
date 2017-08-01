@@ -16,6 +16,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'therubyracer', platforms: :ruby
 gem "slim-rails", '3.1.1'
 gem 'webpacker', '~> 2.0'
+gem 'foreman'
 gem 'jquery-rails'
 gem 'awesome_rails_console', "~> 0.4.0"
 gem 'turbolinks'
