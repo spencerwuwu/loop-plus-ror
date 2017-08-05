@@ -8,8 +8,8 @@ html
     = javascript_include_tag 'front'
 
   body
-    .body-container
+    .body-container style="margin-top: 30px"
       = render(partial: 'front/partials/header')
-      main.main
+      main class="ui segment"
         = yield 
       = render(partial: 'front/partials/footer')

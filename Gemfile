@@ -26,6 +26,7 @@ gem 'carrierwave', '~> 1.0'
 gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'administrate', github: 'thoughtbot/administrate'
 gem 'ruby-units', '~> 2.1.0'
+gem 'database_cleaner'
 
 # User
 gem 'devise', "~> 4.3.0"
@@ -37,6 +38,7 @@ gem 'pbkdf2_password_hasher', "~> 0.2.0"
 
 # Sass framework
 gem 'sass-rails', '~> 5.0'
+gem 'semantic-ui-sass', git: 'https://github.com/doabit/semantic-ui-sass.git'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
