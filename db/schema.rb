@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170729054112) do
+ActiveRecord::Schema.define(version: 20170805043130) do
 
   create_table "roles", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,31 @@ ActiveRecord::Schema.define(version: 20170729054112) do
     t.datetime "updated_at"
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["name"], name: "index_roles_on_name"
+  end
+
+  create_table "stations", force: :cascade do |t|
+    t.float "positionX"
+    t.float "positionY"
+    t.text "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_buys", force: :cascade do |t|
+    t.integer "user_id"
+    t.float "amount"
+    t.datetime "created_date"
+    t.boolean "paid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_uses", force: :cascade do |t|
+    t.integer "user_id"
+    t.float "amount"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -35,6 +60,15 @@ ActiveRecord::Schema.define(version: 20170729054112) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "personal_id"
+    t.string "photo"
+    t.string "birthday"
+    t.string "phone"
+    t.string "address"
+    t.string "school"
+    t.string "phone_mac"
+    t.boolean "enrollment"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -43,6 +77,14 @@ ActiveRecord::Schema.define(version: 20170729054112) do
     t.integer "user_id"
     t.integer "role_id"
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+  end
+
+  create_table "vehicles", force: :cascade do |t|
+    t.float "positionX"
+    t.float "positionY"
+    t.text "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

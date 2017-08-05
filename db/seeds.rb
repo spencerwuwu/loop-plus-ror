@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+DatabaseCleaner.clean_with(:truncation)
+
+Role.create([
+  {id: 1, name: 'admin'}
+])
+Role.create([
+  {id: 2, name: 'staff'}
+])
+Role.create([
+  {id: 3, name: 'member'}
+])
+Role.create([
+  {id: 4, name: 'pending'}
+])

@@ -25,6 +25,7 @@ gem 'mini_magick', "~> 4.6.0"
 gem 'carrierwave', '~> 1.0'
 gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'administrate', github: 'thoughtbot/administrate'
+gem 'bourbon'
 gem 'ruby-units', '~> 2.1.0'
 gem 'database_cleaner'
 
