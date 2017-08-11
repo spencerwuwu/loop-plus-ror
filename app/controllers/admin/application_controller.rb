@@ -9,9 +9,15 @@ module Admin
     before_action :authenticate_admin
 
     def authenticate_admin
-      # TODO Add authentication logic here.
+      unless current_user and accessible?
+        raise ActionController::RoutingError.new('Not Found')
+      end
     end
 
+    private
+    def accessible?
+      current_user.is_admin
+    end
     # Override this value to specify the number of elements to display at a time
     # on index pages. Defaults to 20.
     # def records_per_page
