@@ -16,7 +16,7 @@ module Admin
 
     private
     def accessible?
-      current_user.is_admin
+      current_user.has_role? :admin
     end
     # Override this value to specify the number of elements to display at a time
     # on index pages. Defaults to 20.

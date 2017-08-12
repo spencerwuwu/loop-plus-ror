@@ -4,9 +4,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   prepend_before_action :authenticate_scope!, only: [:edit,:edit_info, :info, :update, :destroy, :show]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  #def new
+  # super
+  #end
 
   # Get /users/info
   def info
@@ -21,7 +21,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
     if resource.save
-      resource.create_virtual_account
+      #resource.create_virtual_account
+    end
   end
 
   # GET /resource/edit
@@ -52,13 +53,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up) do |u|
-      u.permit(:email, :password, :password_confirmation, :name, :personal_id, :photo, :birthday, :phone, :address, :school, :phone_mac, :enrollment)
+      u.permit(:email, :password, :password_confirmation, :name, :personal_id, :photo, :photo_cache, :birthday, :phone, :address, :school, :phone_mac, :enrollment)
     end
   end
 
   def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update) do |u| 
-      u.permit(:email, :password, :password_confirmation, :name, :personal_id, :photo, :birthday, :phone, :address, :school, :phone_mac, :enrollment)
+      u.permit(:password, :password_confirmation, :name, :personal_id, :photo, :birthday, :phone, :address, :school, :phone_mac, :enrollment)
     end
   end
 
