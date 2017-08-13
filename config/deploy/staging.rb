@@ -9,7 +9,7 @@ server '174.138.31.149', user: 'deploy', roles: %w{app db web}
 # server "db.example.com", user: "deploy", roles: %w{db}
 
 set :branch, :develop
-set :rvm_ruby_version, '2.4.1p111'
+set :rvm_ruby_version, '2.4.1'
 
 
 # role-based syntax
