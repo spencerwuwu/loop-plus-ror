@@ -3,7 +3,7 @@ lock "3.9.0"
 
 set :application, "loop-plus-rails"
 # set :repo_url, "git@174.138.31.149:/home/git/loop-plus-rails.git"
-set :repo_url, "https://github.com/spencerwuwu/loop-plus-ror.git"
+set :repo_url, "git@174.138.31.149:/home/git/loop-plus-rails.git"
 
 set :rvm_ruby_version, '2.4.1'
 # Default branch is :master
