@@ -4,9 +4,7 @@ lock "3.9.0"
 set :application, "loop-plus-rails"
 set :repo_url, "git@174.138.31.149:/home/git/loop-plus-rails.git"
 
-set :user,            'deploy'
-set :puma_threads,    [4, 16]
-set :puma_workers,    0
+set :rvm_ruby_version, '2.4.1'
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
