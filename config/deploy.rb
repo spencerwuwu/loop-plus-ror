@@ -74,8 +74,6 @@ namespace :deploy do
   after  :finishing,    :restart
 end
 
-append :linked_files, "db/development.sqlite3"
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/uploads"
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
