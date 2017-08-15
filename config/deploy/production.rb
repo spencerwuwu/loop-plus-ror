@@ -9,6 +9,7 @@ server 'www.looplus.com.tw', user: 'deploy', roles: %w{app db web}
 # server "db.example.com", user: "deploy", roles: %w{db}
 
 set :branch, :master
+set :deploy_to, "/home/deploy/rails_production"
 
 
 # role-based syntax
