@@ -1,0 +1,34 @@
+- content_for(:title) { 'User zone' }
+
+h2 
+  |hello  
+  = current_user.name
+
+p
+  |email:
+  br
+  = current_user.email
+p
+  |license:
+  br
+  = image_tag current_user.photo, style: "width: 200px"
+p
+  |DOB:
+  br
+  = current_user.birthday
+p
+  |phone:
+  br
+  = current_user.phone
+p
+  |address:
+  br
+  = current_user.address
+
+p
+  |school:
+  br
+  = current_user.school
+
+button.item onclick="{#edit_user_registration_path}"
+  | Edit

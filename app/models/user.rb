@@ -4,11 +4,25 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable
 
   after_create :assign_default_role
 
   def assign_default_role
     self.add_role(:pending) if self.roles.blank?
   end
+
+  def self.from_omniauth_nctu(response)
+    auth = JSON.parse(response)
+    Rails.logger.info "email #{auth['email']}"
+    where(provider: "nctu", uid: auth['username']).first_or_create do |user|
+      user.email = auth['email']
+      user.password = Devise.friendly_token[0,20]
+      user.sign_in_type = 1
+    end
+
+  end
+
+
 end

@@ -34,12 +34,18 @@ gem 'devise', "~> 4.3.0"
 gem 'rolify', "~> 5.1.0"
 gem 'cancancan', "~> 2.0.0"
 
+gem 'omniauth'
+
 # Use for validate django's user
 gem 'pbkdf2_password_hasher', "~> 0.2.0"
 
 # Sass framework
 gem 'sass-rails', '~> 5.0'
 gem 'semantic-ui-sass', git: 'https://github.com/doabit/semantic-ui-sass.git'
+
+gem 'redis', '~> 3.0'
+gem 'redis-rails', '~> 5.0.2'
+gem 'dalli'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

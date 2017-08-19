@@ -2,6 +2,9 @@
 
 h2 Sign up
 
+button class="ui botton" onclick="window.location.href='https://id.nctu.edu.tw/o/authorize/?client_id=HkrBkhvzPhOBzrjq90gEPfsw4uMbMVT9nQlEqq7U&response_type=code&scope=profile%20name'"
+  | NCTU oauth
+
 = form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:multipart => true}) do |f|
   = devise_error_messages!
 
@@ -49,6 +52,16 @@ h2 Sign up
     = f.label :photo do
       = f.file_field :photo
       = f.hidden_field :photo_cache
+
+  div class="field"
+    = f.label :address do
+    br
+    = f.text_field :address
+
+  div class="field"
+    = f.label :school do
+    br
+    = f.text_field :school
 
 
 
