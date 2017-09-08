@@ -12,10 +12,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     require 'net/http'
     require 'net/https'
 
-    Rails.logger.info "Request para: #{request.GET['code']}"
-    Rails.logger.info "key: #{Rails.application.secrets.NCTU_OAUTH_KEY}"
-    Rails.logger.info "key: #{Rails.application.secrets.NCTU_OAUTH_SECRET_KEY}"
-    
     code = request.GET['code']
 
     uri = URI('https://id.nctu.edu.tw/o/token/')
@@ -29,10 +25,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       'client_secret'=> Rails.application.secrets.NCTU_OAUTH_SECRET_KEY,
       'redirect_uri'=> 'http://dev.looplus.com.tw:7122/nctuoauth' )
 
-    Rails.logger.info "token_request.body #{token_request.body}"
     token = JSON.parse(token_request.body)
-    Rails.logger.info "token #{token}"
-    Rails.logger.info  "Bearer #{token['access_token']}"
 
     uri = URI("https://id.nctu.edu.tw/api/profile/")
     data_request = Net::HTTP::Get.new(uri)
@@ -41,11 +34,16 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       https.request(data_request)
     }
 
-    Rails.logger.info res.body
     response = res.body
     @user = User.from_omniauth_nctu(response);
     if @user.persisted?
-      sign_in_and_redirect @user, :event => :authentication
+      if @user.has_role? :pending
+        my_notice = "登入成功，請至個人頁面完成註冊"
+      else
+        my_notice = "登入成功，歡迎回來#{@user.name}"
+
+      sign_in_and_redirect @user, :event => :authentication, :notice => my_notice 
+
     else
       redirect_to new_user_registration_url
     end

@@ -15,7 +15,6 @@ class User < ApplicationRecord
 
   def self.from_omniauth_nctu(response)
     auth = JSON.parse(response)
-    Rails.logger.info "email #{auth['email']}"
     where(provider: "nctu", uid: auth['username']).first_or_create do |user|
       user.email = auth['email']
       user.password = Devise.friendly_token[0,20]

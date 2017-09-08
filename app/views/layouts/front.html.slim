@@ -9,6 +9,9 @@ html
     = javascript_include_tag 'front'
 
   body
+    .popout
+      = notice
+      | notice
     .body-container style="margin-top: 30px"
       = render(partial: 'front/partials/header')
       main class="ui segment"
