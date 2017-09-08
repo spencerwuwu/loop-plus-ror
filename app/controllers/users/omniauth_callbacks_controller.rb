@@ -43,6 +43,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         my_notice = "登入成功，歡迎回來#{@user.name}"
 
       sign_in_and_redirect @user, :event => :authentication, :notice => my_notice 
+      end
 
     else
       redirect_to new_user_registration_url
