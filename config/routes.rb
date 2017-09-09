@@ -18,7 +18,10 @@ Rails.application.routes.draw do
 
   end
 
+  resources :articles
+
   namespace :admin do
+    resources :articles
     resources :users
     resources :roles
     resources :vehicles

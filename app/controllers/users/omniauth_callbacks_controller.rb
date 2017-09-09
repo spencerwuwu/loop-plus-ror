@@ -41,9 +41,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         my_notice = "登入成功，請至個人頁面完成註冊"
       else
         my_notice = "登入成功，歡迎回來#{@user.name}"
-
-      sign_in_and_redirect @user, :event => :authentication, :notice => my_notice 
       end
+
+      sign_in_and_redirect @user, :event => :authentication
+      set_flash_message(:notice, :success => my_notice) if is_navigational_format?
 
     else
       redirect_to new_user_registration_url
