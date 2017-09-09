@@ -44,7 +44,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       end
 
       sign_in_and_redirect @user, :event => :authentication
-      set_flash_message(:notice, :success => my_notice) if is_navigational_format?
+      set_flash_message(:notice, :success,:kind => "NCTU OAuth") if is_navigational_format?
 
     else
       redirect_to new_user_registration_url
