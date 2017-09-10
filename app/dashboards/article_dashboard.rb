@@ -13,7 +13,7 @@ class ArticleDashboard < Administrate::BaseDashboard
     subtitle: Field::String,
     image: Field::String,
     tag: Field::String,
-    content: Field::Text,
+    content: CkEditorFieldField,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze

@@ -17,6 +17,7 @@ class User < ApplicationRecord
     auth = JSON.parse(response)
     where(provider: "nctu", uid: auth['username']).first_or_create do |user|
       user.email = auth['email']
+      user.school = "NCTU" 
       user.password = Devise.friendly_token[0,20]
       user.sign_in_type = 1
     end

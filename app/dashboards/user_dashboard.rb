@@ -24,7 +24,7 @@ class UserDashboard < Administrate::BaseDashboard
     updated_at: Field::DateTime,
     name: Field::String,
     personal_id: Field::String,
-    photo: Field::String,
+    photo: ImageField,
     birthday: Field::String,
     phone: Field::String,
     address: Field::String,

@@ -18,56 +18,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def edit_info
   end
 
-  def oauth
-    require 'uri'
-    require 'json'
-    require 'net/http'
-    require 'net/https'
-
-    Rails.logger.info "Request para: #{request.GET['code']}"
-    
-    code = request.GET['code']
-
-    headers = {
-      'grant_type'=> 'authorization_code',
-      'code'=> code,
-      'client_id'=> 'HkrBkhvzPhOBzrjq90gEPfsw4uMbMVT9nQlEqq7U',
-      'client_secret'=> 'dTeq6QuMw7YlJgcPi7Fvd9XEcbyE8Nz1cMeX4C6ns74M2NTyNyvjaK7i8Fkc8tgvoICC1PCecPccxCyv1bC2vWy6JgA6oH2UY70qh1lPNFztqVflPJEZo75flZDy2oOM',
-      'redirect_uri'=> 'http://dev.looplus.com.tw:7122/oauth'}
-
-    uri = URI('https://id.nctu.edu.tw/o/token/')
-    https = Net::HTTP.new(uri.host, uri.port)
-    https.use_ssl = true
-
-    token_request = Net::HTTP::post_form(uri,
-      'grant_type'=> 'authorization_code',
-      'code'=> code,
-      'client_id'=> 'HkrBkhvzPhOBzrjq90gEPfsw4uMbMVT9nQlEqq7U',
-      'client_secret'=> 'dTeq6QuMw7YlJgcPi7Fvd9XEcbyE8Nz1cMeX4C6ns74M2NTyNyvjaK7i8Fkc8tgvoICC1PCecPccxCyv1bC2vWy6JgA6oH2UY70qh1lPNFztqVflPJEZo75flZDy2oOM',
-      'redirect_uri'=> 'http://dev.looplus.com.tw:7122/oauth' )
-
-    Rails.logger.info "token_request.body #{token_request.body}"
-    token = JSON.parse(token_request.body)
-    Rails.logger.info "token #{token}"
-    Rails.logger.info  "Bearer #{token['access_token']}"
-
-    uri = URI("https://id.nctu.edu.tw/api/profile/")
-    data_request = Net::HTTP::Get.new(uri)
-    data_request['Authorization'] = "Bearer #{token['access_token']}"
-    res = Net::HTTP.start(uri.hostname, uri.port) {|http|
-      https.request(data_request)
-    }
-
-    Rails.logger.info res.body
-    @response = res.body
-
-  end
-
   # POST /resource
   def create
     super
     if resource.save
-      #resource.create_virtual_account
+      resource.create_virtual_account
     end
   end
 
@@ -106,6 +61,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update) do |u| 
       u.permit(:password, :password_confirmation, :name, :personal_id, :photo, :birthday, :phone, :address, :school, :phone_mac, :enrollment)
+    end
+  end
+
+  def update_resource(resource, params)
+    if params[:password].blank?
+      resource.update_without_password(params.except(:current_password))
+    else
+      super
     end
   end
 

@@ -1,4 +1,4 @@
-- content_for(:title) { 'User zone' }
+- content_for(:title) { '會員資料' }
 
 h2 
   |hello  
@@ -30,5 +30,5 @@ p
   br
   = current_user.school
 
-button.item onclick="window.location.href='#{edit_user_registration_path}'"
+button.item onclick="window.location.href='#{edit_info_user_registration_path}'"
   | Edit
