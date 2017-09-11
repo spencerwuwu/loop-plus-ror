@@ -11,9 +11,9 @@ class ArticleDashboard < Administrate::BaseDashboard
     id: Field::Number,
     title: Field::String,
     subtitle: Field::String,
-    image: Field::String,
+    image: ImageField,
     tag: Field::String,
-    content: CkEditorFieldField,
+    content: CkEditorField,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze

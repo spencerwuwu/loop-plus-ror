@@ -22,7 +22,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
     if resource.save
-      resource.create_virtual_account
+      #resource.create_virtual_account
     end
   end
 

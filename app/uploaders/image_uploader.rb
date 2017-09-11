@@ -1,5 +1,4 @@
-class CkeditorPictureUploader < CarrierWave::Uploader::Base
-  include Ckeditor::Backend::CarrierWave
+class ImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -35,13 +34,6 @@ class CkeditorPictureUploader < CarrierWave::Uploader::Base
   #   process resize_to_fit: [50, 50]
   # end
 
-  version :thumb do
-    process resize_to_fill: [118, 100]
-  end
-
-  version :content do
-    process resize_to_limit: [800, 800]
-  end
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   # def extension_whitelist
@@ -53,8 +45,5 @@ class CkeditorPictureUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-  def extension_white_list
-    Ckeditor.image_file_types
-  end
 
 end

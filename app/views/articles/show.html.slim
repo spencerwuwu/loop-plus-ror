@@ -3,4 +3,4 @@
 h3 #{@article.title}
 h3 #{@article.subtitle}
 p
-  |#{@article.content}
+  |#{sanitize_content(@article.content)}
