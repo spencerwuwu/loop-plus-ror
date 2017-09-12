@@ -83,7 +83,6 @@ ActiveRecord::Schema.define(version: 20170910202339) do
     t.string "school"
     t.string "phone_mac"
     t.boolean "enrollment"
-    t.string "nctu"
     t.integer "sign_in_type", default: 0
     t.string "provider"
     t.string "uid"
