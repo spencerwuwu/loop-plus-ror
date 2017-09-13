@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170910202339) do
+ActiveRecord::Schema.define(version: 20170913081644) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -86,8 +86,11 @@ ActiveRecord::Schema.define(version: 20170910202339) do
     t.integer "sign_in_type", default: 0
     t.string "provider"
     t.string "uid"
+    t.string "username"
+    t.string "auth_email"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   create_table "users_roles", id: false, force: :cascade do |t|

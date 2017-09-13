@@ -1,11 +1,9 @@
-div class="ui pointing menu"
-  = link_to "Home", "/", class: "item"
-  = link_to "News", articles_path, class: "item"
+div.header
+  = link_to "首頁", "/", class: "item-wide"
+  = link_to "Loop+生活", articles_path, class: "item-wide"
   - if user_signed_in?
-    = link_to "User zone", show_user_registration_path, class: "item"
-    = link_to "Logout", destroy_user_session_path, class: "item"
-    div class="item right"
-      = current_user.email
+    = link_to "會員專區", show_user_registration_path, class: "item-wide"
+    = link_to "登出", destroy_user_session_path, class: "item-wide"
   - else
-    = link_to "Login", new_user_session_path, class: "item"
-    = link_to "Sign in",  new_user_registration_path, class: "item"
+    = link_to "會員登入", new_user_session_path, class: "item-wide"
+    = link_to "註冊",  new_user_registration_path, class: "item-wide"
