@@ -13,8 +13,11 @@ Rails.application.routes.draw do
     get '/nctuoauth', :to => 'users/omniauth_callbacks#nctu'
   end
 
-  # scope for removing '/head' in the path
-  scope module: "head" do
+  # scope for removing '/front' in the path
+  scope module: "front" do
+    get '/about' => 'pages#about'
+    get '/download' => 'pages#download'
+    get '/service' => 'pages#service'
 
   end
 

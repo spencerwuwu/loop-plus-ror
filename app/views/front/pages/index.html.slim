@@ -1,5 +1,8 @@
 - content_for(:title) { '首頁' }
+javascript:
+  document.getElementById("page-index").classList.add("header-item-on");
 
 h3 Index Page
 -if user_signed_in?
   = image_tag current_user.photo, style: "width: 20%;"
+
