@@ -7,8 +7,8 @@ class User < ApplicationRecord
     :recoverable, :rememberable, :trackable, :validatable,
     :omniauthable, :authentication_keys => [:login]
 
-  # Virtual attribute for authenticating by either username or email
-  # This is in addition to a real persisted field like 'username'
+  # Virtual attribute for authenticating by either personal_id or email
+  # This is in addition to a real persisted field like 'personal_id'
   attr_accessor :login
   after_create :assign_default_role
 
@@ -18,17 +18,17 @@ class User < ApplicationRecord
 
 
   # Only allow letter, number, underscore and punctuation.
-  validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
+  validates_format_of :personal_id, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
-      where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+      where(conditions).where(["lower(personal_id) = :value OR lower(email) = :value", { :value => login.downcase }]).first
     else
-      if conditions[:username].nil?
+      if conditions[:personal_id].nil?
         where(conditions).first
       else
-        where(username: conditions[:username]).first
+        where(personal_id: conditions[:personal_id]).first
       end
     end
   end

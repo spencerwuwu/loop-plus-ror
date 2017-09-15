@@ -1,17 +1,16 @@
-- content_for(:title) { '列表' }
+- content_for(:title) { 'Loop+生活' }
+javascript:
+  document.getElementById("page-life").classList.add("header-item-on");
 
-h3 
-  |News List
-  br
-table class="ui celled table"
-  tr
-    th Title
-    th Subtitle
+.article-indexs
   - @articles.each do |article|
-    tr
-      td
-        = link_to article_path(article)  do
+    = link_to article_path(article), class: "article-index"
+      .article-index-pic-container
+        .article-index-pic
+          = image_tag "#{article.image}"
+      .article-index-word
+        .title
           = article.title 
-      td 
-        = article.subtitle
+        br
+        = article.subtitle 
 

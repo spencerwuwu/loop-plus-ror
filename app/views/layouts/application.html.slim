@@ -3,13 +3,15 @@ html
   head
     title #{content_for(:title)} | LOOP+
     = csrf_meta_tags 
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
 
     = stylesheet_link_tag    'front', media: 'all'
     = javascript_include_tag 'front'
 
   body
-    .body-container style="margin-top: 30px"
-      = render(partial: 'front/partials/header')
-      main class="ui segment"
-        = yield 
-      = render(partial: 'front/partials/footer')
+    .popout
+      = notice
+    = render(partial: 'front/partials/header')
+    .body-container
+      = yield 
+    = render(partial: 'front/partials/footer')
