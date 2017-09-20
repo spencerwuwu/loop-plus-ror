@@ -9,7 +9,8 @@ class UserUseDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    user_id: Field::Number,
+    user: Field::BelongsTo,
+    vehicle: Field::BelongsTo,
     amount: Field::Number.with_options(decimals: 2),
     date: Field::DateTime,
     created_at: Field::DateTime,
@@ -23,7 +24,7 @@ class UserUseDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :id,
-    :user_id,
+    :user,
     :amount,
     :date,
   ].freeze
@@ -32,7 +33,8 @@ class UserUseDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :id,
-    :user_id,
+    :user,
+    :vehicle,
     :amount,
     :date,
     :created_at,
@@ -43,7 +45,8 @@ class UserUseDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :user_id,
+    :user,
+    :vehicle,
     :amount,
     :date,
   ].freeze

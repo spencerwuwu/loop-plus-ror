@@ -20,3 +20,12 @@ Role.create([
 Role.create([
   {id: 4, name: 'pending'}
 ])
+
+User.create([
+  {email: 'gg@gmail.com',
+   name: 'gg',
+   personal_id: 'a12345678',
+   password: 'ggininder'
+}
+])
+

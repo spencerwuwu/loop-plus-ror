@@ -9,6 +9,7 @@ class UserDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     roles: Field::HasMany,
+    user_uses: Field::HasMany,
     id: Field::Number,
     email: Field::String,
     encrypted_password: Field::String,
@@ -49,6 +50,7 @@ class UserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :roles,
+    :user_uses,
     :id,
     :email,
     :encrypted_password,
@@ -77,6 +79,7 @@ class UserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :roles,
     :roles,
     :email,
     :encrypted_password,

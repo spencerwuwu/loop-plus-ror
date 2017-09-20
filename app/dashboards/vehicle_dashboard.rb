@@ -9,6 +9,7 @@ class VehicleDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
+    user_uses: Field::HasMany,
     postitionX: Field::Number.with_options(decimals: 2),
     positionY: Field::Number.with_options(decimals: 2),
     status: Field::Text,
@@ -32,6 +33,7 @@ class VehicleDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :id,
+    :user_uses,
     :postitionX,
     :positionY,
     :status,
