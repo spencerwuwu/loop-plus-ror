@@ -1,8 +1,21 @@
 - content_for(:title) { '首頁' }
 javascript:
   document.getElementById("page-index").classList.add("header-item-on");
+  document.getElementById("main-body").setAttribute("style", "margin-top: 0;");
 
-h3 Index Page
+.index-slide-container
+  .index-slide
+    .slideBlock
+      - @banners.each do |banner|
+        = link_to(banner.url, class: 'slideFrame slide_layout_type_a slideEffect') do
+          - if banner.image.present?
+            = image_tag banner.image
+          - else
+            = image_tag "woman1.jpg"
+      .slidePoint
+
 -if user_signed_in?
   = image_tag current_user.photo, style: "width: 20%;"
+
+div style="height: 1000px"
 

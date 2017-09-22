@@ -1,12 +1,17 @@
 .header 
   background-color: $basic-black
-  position: relative
+  z-index: 500
+  top: 0
+  left: 0
+  position: fixed
   display: flex
   justify-content: center
   align-items: center
   flex-flow: row wrap
   padding: 10px 0
   width: 100%
+  text-shadow: 2px 2px rgba(90,90,90,0.5)
+  box-shadow: 0px 4px 10px rgba( 100, 100, 100, 0.5)
 
   .header-container
     @media #{$header-big-device}
@@ -59,10 +64,13 @@
   color: $basic-white
   text-decoration: none
   border: 2px solid $basic-white
+  box-shadow: 1px 1px 0 rgba(90,90,90,0.6)
   border-radius: 10px
   line-height: 36px
   margin: 0 20px
   transition: all 300ms ease-in-out
   &:hover
     background-color: $basic-white
+    text-shadow: none
+    box-shadow: none
     color: $basic-black
