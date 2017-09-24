@@ -1,7 +1,3 @@
-function goDotDotDot() {
-  $(".readMore").dotdotdot();
-}
-
 // Setting Vars
 var sqssSlidePlayInterval = 6180;
 var sqssSlidePlayIntervalTouched = 6180;
@@ -197,21 +193,16 @@ function SQSSResetInterval(whichObj) {
 }
 
 function setHeight(){
-	var width = $(window).width();
-  if (width >= 789)
-    $(".index-slide-container").css("height", width /2.2);
-  else 
-    $(".index-slide-container").css("height", width *4/3);
+	var height = $(window).height();
+    $(".index-slide-container").css("height", height);
 }
 
 
 $(document).ready(function() {
-  goDotDotDot();
 
   setHeight();
 
   $(window).resize(function() {
-    goDotDotDot();
     setHeight();
   });
 });

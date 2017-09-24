@@ -18,7 +18,6 @@ function headerTransform() {
 $(document).ready(function() {
   // Header for index
   if ($(".index-slide-container").is(":visible")) {
-    console.log("Hi");
     headerTransform();
   }
   else {
