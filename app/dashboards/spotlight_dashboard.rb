@@ -12,7 +12,7 @@ class SpotlightDashboard < Administrate::BaseDashboard
     title: Field::String,
     sub_title: Field::String,
     url: Field::String,
-    image: Field::ImageField,
+    image: ImageField,
     rank: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
