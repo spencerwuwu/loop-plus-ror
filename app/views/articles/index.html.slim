@@ -11,6 +11,5 @@ javascript:
       .article-index-word
         .title
           = article.title 
-        br
-        = article.subtitle 
+        = truncate(article.subtitle, :length => 80)
 

@@ -18,3 +18,62 @@
   align-items: flex-start
   flex-flow: row wrap
 
+h1
+  font-size: 24px
+  margin-right: 24px
+  font-weight: 120
+  margin-bottom: 11px
+
+hr
+  width: 100%
+  border: 0
+  border-top: 1px solid $basic-black
+  margin-top: 0px
+  padding: 0
+
+
+form
+  width: 95%
+  max-width: 660px
+  .field 
+    margin: 8px 0
+    font-size: 18px
+    line-height: 36px
+
+    .title
+      width: 120px
+      display: inline-block
+    label
+      display: none
+
+    input, .input
+      margin-left: 18px
+      font-size: 18px
+      line-height: 32px
+      border-radius: 10px
+      border: 1px solid $basic-black
+
+    .long-input
+      @media #{$big-device}
+        width: 50%
+      @media #{$mid-device}
+        width: 50%
+      @media #{$small-device}
+        width: 100%
+
+    a
+      color: $basic-black
+      font-size: 18px
+      line-height: 32px
+      border-radius: 10px
+
+  .actions
+    input
+      margin-top: 20px
+      background-color: $basic-black
+      color: $basic-white
+      font-size: 18px
+      line-height: 32px
+      border-radius: 10px
+      text-align: center
+      width: 120px

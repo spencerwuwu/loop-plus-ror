@@ -1,8 +1,8 @@
 class Front::PagesController < ApplicationController
-  layout 'front'
 
   def index
     @banners = Banner.order(rank: :asc)
+    @spotlights = Spotlight.order(rank: :asc)
   end
   
   def about

@@ -12,4 +12,7 @@
 //
 //= require rails-ujs
 //= require turbolinks
-//= require_tree .
+//= require ./cable.js
+//= require ./front.js
+//= require_tree ./administrate
+//= require jquery.turbolinks

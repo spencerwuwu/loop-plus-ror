@@ -14,8 +14,19 @@ javascript:
             = image_tag "woman1.jpg"
       .slidePoint
 
--if user_signed_in?
+/-if user_signed_in?
   = image_tag current_user.photo, style: "width: 20%;"
 
-div style="height: 1000px"
+.index-spotlight-container
+  - @spotlights.each do |spotlight|
+    = link_to(spotlight.url, class: 'index-spotlight') do
+      .index-spotlight-pic-container
+        .pic
+          - if spotlight.image.present?
+            = image_tag spotlight.image
+          - else
+            = image_tag "woman1.jpg"
 
+div style="width:100%; height: 400px;"
+
+= javascript_include_tag 'vender'

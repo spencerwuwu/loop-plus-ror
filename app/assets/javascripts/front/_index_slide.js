@@ -199,13 +199,13 @@ function SQSSResetInterval(whichObj) {
 function setHeight(){
 	var width = $(window).width();
   if (width >= 789)
-    $("#slide-container").css("height", width /2);
+    $(".index-slide-container").css("height", width /2.2);
   else 
-    $("#slide-container").css("height", width *4/3);
+    $(".index-slide-container").css("height", width *4/3);
 }
 
 
-$(document).on('turbolinks:load', function() {
+$(document).ready(function() {
   goDotDotDot();
 
   setHeight();

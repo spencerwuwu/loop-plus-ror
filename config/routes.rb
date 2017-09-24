@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :articles
     resources :banners
+    resources :spotlights
     resources :users
     resources :roles
     resources :vehicles

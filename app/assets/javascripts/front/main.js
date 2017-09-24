@@ -3,7 +3,7 @@ function setBodyHeight(){
   $("#main-body").css("min-height", height - 76);
 }
 
-$(document).on('turbolinks:load', function() {
+$(document).ready(function() {
   setBodyHeight();
 
   $(window).resize(function() {

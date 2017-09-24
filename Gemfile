@@ -18,6 +18,7 @@ gem "slim-rails", '3.1.1'
 gem 'webpacker', '~> 2.0'
 gem 'foreman'
 gem 'jquery-rails'
+gem 'jquery-turbolinks'
 gem 'awesome_rails_console', "~> 0.4.0"
 gem 'turbolinks'
 gem 'settingslogic', "~> 2.0.9"

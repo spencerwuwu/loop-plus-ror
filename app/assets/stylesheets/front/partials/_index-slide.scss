@@ -16,7 +16,7 @@
     right: 0;
     position: absolute;
     overflow: hidden;
-    background-color: #E0E0E0;
+    background-color: black;
     cursor:pointer;
 }
 .slideFrame {
@@ -63,19 +63,18 @@
   cursor: pointer;
   margin-right: 20px;
   border-radius: 50%;
-  background-color: #eee;
-  border: 1px solid #ddd;
+  border: 2px solid #ddd;
   //box-shadow: 2px 2px rgba(0,0,0,0.5);
 }
 
 .slideBlock .slidePoint .point:hover {
-  background-color: #666666;
+  background-color: #bbbbbb;
 }
 .slideBlock .slidePoint .here {
-  background-color: #999999;
+  background-color: #eeeeee;
 }
 .slideBlock .slidePoint .here:hover {
-  background-color: #999999;
+  background-color: #eeeeee;
 }
 .slideBlock .slideEffect {
   -moz-transition-property: left;
