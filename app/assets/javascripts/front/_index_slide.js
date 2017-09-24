@@ -20,7 +20,7 @@ var sqssNaviUA = navigator.userAgent.toLowerCase();
 var sqssClientIsAndroid = sqssNaviUA.indexOf("android") > -1;
 
 ///// SHALL WE BEGIN ////////////////////
-$(document).on('turbolinks:load', function() {
+$(document).ready( function() {
 	SQSSInitSlideShow();
 });
 function SQSSInitSlideShow() {
