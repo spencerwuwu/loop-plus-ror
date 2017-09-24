@@ -27,7 +27,7 @@ set :rvm_ruby_version, '2.4.1'
 append :linked_files, "db/development.sqlite3", "db/staging.sqlite3", "db/production.sqlite3"
 
 # Default value for linked_dirs is []
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "public/uploads"
 
 
 
