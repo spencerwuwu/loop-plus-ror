@@ -1,4 +1,4 @@
-class ArticlesController < ApplicationController
+class Front::ArticlesController < ApplicationController
   layout 'front'
 
   def index

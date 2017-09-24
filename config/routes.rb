@@ -19,9 +19,9 @@ Rails.application.routes.draw do
     get '/download' => 'pages#download'
     get '/service' => 'pages#service'
 
+    resources :articles
   end
 
-  resources :articles
 
   namespace :admin do
     resources :articles
