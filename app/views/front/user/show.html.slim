@@ -1,0 +1,52 @@
+- content_for(:title) { '會員資料' }
+
+.front-user-container
+  = render(partial: 'front/user/front_user_index')
+
+  .front-user-content
+    h1 會員資料
+    hr
+    
+    .form
+      .field
+        |姓名： 
+        = current_user.name
+      .field
+        |校系級：
+
+      .field
+        |聯絡電話： 
+        = current_user.phone
+
+      .twin-field-container
+        .twin-field
+          |駕照正面： 
+
+        .twin-field
+          |駕照反面： 
+
+      .twin-field-container
+        .twin-field
+          |身份證正面： 
+
+        .twin-field
+          |身份證反面： 
+
+      .field
+        |聯絡地址： 
+        = current_user.address
+
+      .field
+        |緊急聯絡人： 
+        = current_user.e_contact_name
+
+      .field
+        |緊急聯絡人關係： 
+        = current_user.e_contact_relat
+
+      .field
+        |緊急聯絡人電話： 
+        = current_user.e_contact_phone
+
+      button Onclick='window.location.href="#{edit_user_info_path};"'
+        |修改會員資料

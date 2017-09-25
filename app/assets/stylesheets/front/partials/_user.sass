@@ -1,0 +1,44 @@
+.user-form
+  margin: 30px 0
+  display: flex
+  width: 95%
+  max-width: 1200px
+  flex-flow: row wrap
+  justify-content: flex-start
+  align-items: flex-start
+
+.front-user-container
+  margin: 30px 0
+  display: flex
+  width: 95%
+  max-width: 1200px
+  flex-flow: row wrap
+  justify-content: space-around
+  align-items: flex-start
+
+.front-user-index
+  width: 160px
+  @media #{$big-device}
+    display: flex
+  @media #{$mid-device}
+    display: flex
+  @media #{$small-device}
+    display: none
+  flex-flow: row wrap
+  justify-content: center
+  align-items: flex-start
+  border: 1px solid $basic-black
+  border-radius: 20px
+  height: 300px
+
+.front-user-content
+  display: flex
+  @media #{$big-device}
+    width: 80%
+  @media #{$mid-device}
+    width: 75%
+  @media #{$small-device}
+    width: 100%
+  flex-flow: row wrap
+  justify-content: flex-start
+  align-items: flex-start

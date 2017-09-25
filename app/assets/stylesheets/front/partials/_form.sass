@@ -1,0 +1,76 @@
+form, .form
+  width: 95%
+  max-width: 660px
+  .twin-field-container
+    width: 100%
+    display: flex
+    position: relative
+    justify-content: space-between
+    align-items: flex-start
+    flex-flow: row wrap
+
+  .twin-field
+    display: flex
+    margin: 8px 0
+    font-size: 18px
+    line-height: 36px
+    @media #{$big-device}
+      width: 45%
+    @media #{$mid-device}
+      width: 45%
+    @media #{$small-device}
+      width: 100%
+
+    
+  .field
+    display: flex
+    margin: 8px 0
+    font-size: 18px
+    line-height: 36px
+
+  .title
+    width: 120px
+    display: inline-block
+  label
+    display: none
+
+  input, .input
+    margin-left: 18px
+    font-size: 18px
+    line-height: 32px
+    border-radius: 10px
+    border: 1px solid $basic-black
+
+  .long-input
+    @media #{$big-device}
+      width: 50%
+    @media #{$mid-device}
+      width: 50%
+    @media #{$small-device}
+      width: 100%
+
+  button 
+    margin-top: 20px
+    padding: 10px 20px
+    background-color: $basic-black
+    color: $basic-white
+    font-size: 18px
+    line-height: 32px
+    border-radius: 10px
+    text-align: center
+  a
+    color: $basic-black
+    font-size: 18px
+    line-height: 32px
+    border-radius: 10px
+
+  .actions
+    input
+      margin-top: 20px
+      background-color: $basic-black
+      color: $basic-white
+      font-size: 18px
+      line-height: 32px
+      border-radius: 10px
+      text-align: center
+      width: 120px

@@ -3,13 +3,14 @@ Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   root to: 'front/pages#index'
 
+  get '/user' => 'front/user#show', as: :user_root # creates user_root_path
+  get '/user/show', :to => 'front/user#show', :as => 'show_user'
+
 #  devise_for :users
   devise_for :users, controllers: { registrations: "users/registrations" }
 
   devise_scope :user do
-    get 'users/info', :to => 'users/registrations#info', :as => 'info_user_registration'
-    get 'users/show', :to => 'users/registrations#show', :as => 'show_user_registration'
-    get 'users/edit_info', :to => 'users/registrations#edit_info', :as => 'edit_info_user_registration'
+    get '/users/edit_info', :to => 'users/registrations#edit_info', :as => 'edit_user_info'
     get '/nctuoauth', :to => 'users/omniauth_callbacks#nctu'
   end
 
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
     get '/about' => 'pages#about'
     get '/download' => 'pages#download'
     get '/service' => 'pages#service'
+    get '/no_d2' => 'pages#no_d2'
 
     resources :articles
   end

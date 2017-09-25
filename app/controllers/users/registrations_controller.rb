@@ -9,11 +9,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #end
 
   # Get /users/info
-  def info
-  end
+  #def info
+  #end
 
-  def show
-  end
+ # def show
+  #end
 
   def edit_info
   end

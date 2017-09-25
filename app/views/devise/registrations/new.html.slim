@@ -1,4 +1,4 @@
-- content_for(:title) { 'Sign in' }
+- content_for(:title) { '新會員註冊' }
 
 .user-form
   h1 新會員註冊
@@ -48,10 +48,12 @@
 
 
     .actions
-      = f.submit "Sign up"
+      = f.submit "會員註冊"
 
     .field
       |已經有帳號？  
       = link_to "會員登入", new_session_path(resource_name)
+      br
+      = link_to "沒有d2信箱？", no_d2_path
 
   /= render "devise/shared/links"

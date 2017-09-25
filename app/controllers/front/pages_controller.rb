@@ -14,4 +14,7 @@ class Front::PagesController < ApplicationController
   def download
   end
 
+  def no_d2
+  end
+
 end

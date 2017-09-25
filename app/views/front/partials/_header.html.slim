@@ -11,7 +11,7 @@ div.header#header
       div style="display: flex"
         = link_to "下載app", "/download", class: "header-download", id: "page-download"
         - if user_signed_in?
-          a href="/users/show" class= "item" id= "page-userzone"
+          a href="#{show_user_path}" class= "item" id= "page-userzone"
             |嗨 
             =current_user.name
           /= link_to "登出", destroy_user_session_path, class: "item"
