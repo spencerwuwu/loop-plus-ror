@@ -13,7 +13,12 @@ function headerTransform() {
   $("#header").css("background", "rgba(56,56,56,0)");
   $("#header").css("box-shadow", "none");
   $(document).scroll(function() {
-    setHeader();
+    if ($(".header-wide-sub-container").is(":hidden")) {
+      setHeader();
+    }
+    else {
+      $("#header").css("background", "rgba(56,56,56,1)");
+    }
   });
 
 }
@@ -24,7 +29,12 @@ $(document).ready(function() {
     function() {
       $("#header").css("background", "rgba(56,56,56,1)");
     }, function(){
-      setHeader();
+      if ($(".header-wide-sub-container").is(":hidden")) {
+        setHeader();
+      }
+      else {
+        $("#header").css("background", "rgba(56,56,56,1)");
+      }
     }
   );
 

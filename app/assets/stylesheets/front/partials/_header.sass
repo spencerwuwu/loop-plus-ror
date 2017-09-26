@@ -47,6 +47,7 @@
         justify-content: space-between
 
     .item
+      cursor: pointer
       font-size: 18px
       text-align: center 
       margin: 0 10px
@@ -88,6 +89,25 @@
     text-shadow: none
     box-shadow: none
     color: $basic-black
+
+
+.header-wide-sub-container
+  width: 120px
+  position: fixed
+  display: none
+.header-wide-sub
+  font-size: 18px
+  line-height: 36px
+  display: block
+  position: relative
+  width: 100%
+  text-align: center
+  background-color: $basic-black
+  color: $basic-white
+  text-decoration: none
+  transition: all 300ms ease-in-out
+  &:hover
+    background-color: #424242
 
 .header-narrow-on, .header-narrow-close
   position: absolute
