@@ -6,10 +6,10 @@ div.header#header
         = link_to "首頁", "/", class: "item", id: "page-index"
         = link_to "還沒想好", "#", class: "item"
         = link_to "Loop+生活", articles_path, class: "item", id: "page-life"
-        = link_to "關於我們", "/about", class: "item", id: "page-about"
-        = link_to "服務中心", "/service", class: "item", id: "page-service"
+        = link_to "關於我們", about_path, class: "item", id: "page-about"
+        = link_to "服務中心", service_path, class: "item", id: "page-service"
       div style="display: flex"
-        = link_to "下載app", "/download", class: "header-download", id: "page-download"
+        = link_to "下載app", download_path, class: "header-download", id: "page-download"
         - if user_signed_in?
           a href="#{show_user_path}" class= "item" id= "page-userzone"
             |嗨 
@@ -18,3 +18,25 @@ div.header#header
         - else
           = link_to "登入", new_user_session_path, class: "item"
           /= link_to "註冊",  new_user_registration_path, class: "item"
+    
+    .item-narrow-container
+      .header-narrow-on &equiv;
+      .header-narrow-close &#10005;
+.header-narrow-bg#menublack
+.header-narrow-navbar
+  = link_to '還沒想好', '#', class: "navbar-main"
+  = link_to 'Loop+生活', articles_path, class: "navbar-main"
+  = link_to '關於我們', about_path, class: "navbar-main"
+  = link_to '服務中心', service_path, class: "navbar-main"
+  = link_to '下載app', download_path, class: "navbar-main"
+  - if user_signed_in?
+    .navbar-main#narrow-menu-control
+      |會員中心
+    .navbar-sub-container
+      = link_to "基本資料", show_user_path, class: "navbar-sub"
+      = link_to "騎乘記錄", user_uses_path, class: "navbar-sub"
+      = link_to "Loop+幣", user_points_path, class: "navbar-sub"
+      = link_to "儲值記錄", user_payments_path, class: "navbar-sub"
+    = link_to '登出', destroy_user_session_path, class: "navbar-main"
+  - else
+    = link_to '會員登入', new_user_session_path, class: "navbar-main"
