@@ -1,0 +1,10 @@
+.front-user-container
+  = render(partial: 'front/user/front_user_index')
+
+  .front-user-content
+    h1 儲值記錄
+    hr
+
+javascript:
+  document.getElementById("user_payments").classList.add("current");
+  document.getElementById("user_payments_arrow").setAttribute("style", "display: block;");

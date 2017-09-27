@@ -1,0 +1,11 @@
+.front-user-container
+  = render(partial: 'front/user/front_user_index')
+
+  .front-user-content
+    h1 
+      |Loop+幣
+    hr
+
+javascript:
+  document.getElementById("user_points").classList.add("current");
+  document.getElementById("user_points_arrow").setAttribute("style", "display: block;");

@@ -1,0 +1,11 @@
+.front-user-container
+  = render(partial: 'front/user/front_user_index')
+
+  .front-user-content
+    h1 
+      |騎乘記錄
+    hr
+
+javascript:
+  document.getElementById("user_uses").classList.add("current");
+  document.getElementById("user_uses_arrow").setAttribute("style", "display: block;");
