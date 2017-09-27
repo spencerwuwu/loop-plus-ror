@@ -29,7 +29,36 @@
   align-items: flex-start
   border: 1px solid $basic-black
   border-radius: 20px
-  height: 300px
+
+  .item
+    font-size: 20px
+    padding: 8px 0
+    line-height: 42px
+    width: 100%
+    position: relative
+    display: flex
+    justify-content: center
+    align-items: flex-start
+    text-align: center
+    text-decoration: none
+    color: $basic-black
+
+    .arrow
+      position: absolute
+      font-size: 20px
+      line-height: 36px
+      top: 9px
+      left: 15px
+      display: none
+      transition: all 300ms ease-in-out
+
+    &:hover
+      .arrow
+        display: block
+
+  .current
+    background-color: $basic-blue
+
 
 .front-user-content
   display: flex

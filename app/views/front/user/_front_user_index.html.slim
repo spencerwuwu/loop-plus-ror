@@ -1,1 +1,25 @@
 .front-user-index
+  .item
+    |會員中心
+
+  a.item href="#{show_user_path}" id="show_user"
+    |基本資料
+    .arrow id="show_user_arrow"
+      |&#9658;
+  a.item href="#{user_uses_path}" id="user_uses"
+    |騎乘記錄
+    .arrow id="user_uses_arrow"
+      |&#9658;
+  a.item href="#{user_points_path}" id="user_points"
+    |Loop+幣
+    .arrow id="user_points_arrow"
+      |&#9658;
+  a.item href="#{user_payments_path}" id="user_payments"
+    |儲值記錄
+    .arrow id="user_payments_arrow"
+      |&#9658;
+  a.item href="#{destroy_user_session_path}"
+    |登出
+    .arrow
+      |&#9658;
+
