@@ -60,7 +60,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update) do |u| 
-      u.permit(:password, :password_confirmation, :name, :personal_id, :photo, :birthday, :phone, :address, :school, :phone_mac, :enrollment)
+      u.permit(:password, :password_confirmation, :name, :personal_id, :license_pic_rear, :license_pic_front, :id_pic_rear, :id_pic_front , :birthday, :phone, :address, :school, :phone_mac, :enrollment, :e_contact_name, :e_contact_relat, :e_contact_phone)
     end
   end
 

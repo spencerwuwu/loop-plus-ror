@@ -13,8 +13,7 @@ function narrow_hidden_click() {
 }
 
 function set_wide_submenu_position() {
-  var top_pos = $("#header").offset();
-  $(".header-wide-sub-container").css("top", top_pos.top + $("#header").height() + 20);
+  $(".header-wide-sub-container").css("top", $("#header").height() + 20);
   var left_pos = $("#page-userzone").offset();
   $(".header-wide-sub-container").css("left", left_pos.left -15);
 }

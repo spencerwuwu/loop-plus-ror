@@ -12,6 +12,10 @@ class UserDashboard < Administrate::BaseDashboard
     user_uses: Field::HasMany,
     id: Field::Number,
     email: Field::String,
+    id_pic_front: LicenseField,
+    id_pic_rear: LicenseField,
+    license_pic_rear: LicenseField,
+    license_pic_front: LicenseField,
     encrypted_password: Field::String,
     reset_password_token: Field::String,
     reset_password_sent_at: Field::DateTime,
@@ -25,12 +29,10 @@ class UserDashboard < Administrate::BaseDashboard
     updated_at: Field::DateTime,
     name: Field::String,
     personal_id: Field::String,
-    photo: ImageField,
     birthday: Field::String,
     phone: Field::String,
     address: Field::String,
     school: Field::String,
-    phone_mac: Field::String,
     enrollment: Field::Boolean,
   }.freeze
 
@@ -40,66 +42,51 @@ class UserDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :roles,
-    :id,
+    :name,
     :email,
-    :encrypted_password,
+    :school,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :roles,
-    :user_uses,
-    :id,
-    :email,
-    :encrypted_password,
-    :reset_password_token,
-    :reset_password_sent_at,
-    :remember_created_at,
-    :sign_in_count,
-    :current_sign_in_at,
-    :last_sign_in_at,
-    :current_sign_in_ip,
-    :last_sign_in_ip,
-    :created_at,
-    :updated_at,
     :name,
+    :user_uses,
+    :email,
     :personal_id,
-    :photo,
     :birthday,
     :phone,
     :address,
     :school,
-    :phone_mac,
     :enrollment,
+    :id_pic_front,
+    :id_pic_rear,
+    :license_pic_rear,
+    :license_pic_front,
+    :current_sign_in_ip,
+    :last_sign_in_ip,
+    :created_at,
+    :updated_at,
+    :roles,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :roles,
-    :roles,
-    :email,
-    :encrypted_password,
-    :reset_password_token,
-    :reset_password_sent_at,
-    :remember_created_at,
-    :sign_in_count,
-    :current_sign_in_at,
-    :last_sign_in_at,
-    :current_sign_in_ip,
-    :last_sign_in_ip,
     :name,
+    :email,
     :personal_id,
-    :photo,
     :birthday,
     :phone,
     :address,
     :school,
-    :phone_mac,
     :enrollment,
+    :id_pic_front,
+    :id_pic_rear,
+    :license_pic_rear,
+    :license_pic_front,
+    :roles,
   ].freeze
 
   # Overwrite this method to customize how users are displayed

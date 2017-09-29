@@ -1,5 +1,8 @@
 class User < ApplicationRecord
-  mount_uploader :photo, LicenseUploader
+  mount_uploader :license_pic_front, LicenseUploader
+  mount_uploader :license_pic_rear, LicenseUploader
+  mount_uploader :id_pic_front, LicenseUploader
+  mount_uploader :id_pic_rear, LicenseUploader
   has_many :user_uses
   rolify
   # Include default devise modules. Others available are:

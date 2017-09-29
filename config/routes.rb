@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/user/points', :to => 'front/user#points', :as => 'user_points'
   get '/user/payments', :to => 'front/user#payments', :as => 'user_payments'
 
-#  devise_for :users
+  # devise_for :users
   devise_for :users, controllers: { registrations: "users/registrations" }
 
   devise_scope :user do

@@ -15,21 +15,17 @@
           |姓名：
         = f.label :name
         br
-        = f.text_field :name
+        = f.text_field :name, :disabled => true
 
       .field
         .title
           |身分證字號：
         = f.label :personal_id
-        = f.text_field :personal_id, autofocus: true 
-
-      .field
-        .title
-          |身分證字號：
-        = f.label :personal_id
-        = f.text_field :personal_id, autofocus: true 
+        = f.text_field :personal_id, :disabled => true
 
       div.field
+        .title
+          |生日：
         = f.label :生日
         br
         = f.text_field :birthday
@@ -39,21 +35,99 @@
            = f.file_field :photo
 
       div.field
+        .title
+          |是否在學：
         = f.label :是否在學
         br
         = f.check_box :enrollment
 
       div.field
+        .title
+          |聯絡地址：
         = f.label :address
         br
-        = f.text_field :address
+        = f.text_field :address, class: "long-input"
+
+      .twin-field-container
+        .pic-field
+          .title
+            |駕照正面：
+          .pic-input-container
+            - if current_user.license_pic_front?
+              = f.label :更改檔案
+            - else
+              = f.label :上傳檔案
+            = f.file_field :license_pic_front, class: "target"
+            br
+            span.return
+
+        .pic-field
+          .title
+            |駕照反面：
+          .pic-input-container
+            - if current_user.license_pic_rear?
+              = f.label :更改檔案
+            - else
+              = f.label :上傳檔案
+            = f.file_field :license_pic_rear, class: "target"
+            br
+            span.return
+
+      .twin-field-container
+        .pic-field
+          .title
+            |身分證正面：
+          .pic-input-container
+            - if current_user.id_pic_front?
+              = f.label :更改檔案
+            - else
+              = f.label :上傳檔案
+            = f.file_field :id_pic_front, class: "target"
+            br
+            span.return
+
+        .pic-field
+          .title
+            |身份證反面：
+          .pic-input-container
+            - if current_user.id_pic_rear?
+              = f.label :更改檔案
+            - else
+              = f.label :上傳檔案
+            = f.file_field :id_pic_rear, class: "target"
+            br
+            span.return
+
+
+      div.field
+        .title
+          |緊急聯絡人：
+        = f.label :e_contact_name
+        br
+        = f.text_field :e_contact_name
+
+      div.field
+        .title
+          |緊急聯絡人關係：
+        = f.label :e_contact_relat
+        br
+        = f.text_field :e_contact_relat
+
+      div.field
+        .title
+          |緊急聯絡人電話：
+        = f.label :e_contact_phone
+        br
+        = f.text_field :e_contact_phone
+
 
       div class="actions"
-        = f.submit "更新"
+        = f.submit "儲存變更"
+      br
 
 
     form
-      = link_to "返回", :back, class: "button"
+      = link_to "返回", :back
 
 javascript:
   document.getElementById("show_user").classList.add("current");
