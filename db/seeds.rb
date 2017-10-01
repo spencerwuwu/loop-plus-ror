@@ -29,3 +29,6 @@ User.create([
 }
 ])
 
+user = User.find(1);
+user.add_role admin;
+user.save;

@@ -8,8 +8,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable, :validatable,
-    :omniauthable, :authentication_keys => [:login]
+    :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable, :authentication_keys => [:login]
 
   # Virtual attribute for authenticating by either personal_id or email
   # This is in addition to a real persisted field like 'personal_id'

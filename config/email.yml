@@ -1,0 +1,24 @@
+development: 
+    address: "mail.looplus.com.tw"
+    domain: "looplus.com.tw"
+    user_name: "system"
+    password: "loopplusGoGo"
+    authentication: "login"
+    enable_starttls_auto: true
+
+staging: 
+    address: "mail.looplus.com.tw"
+    domain: "looplus.com.tw"
+    user_name: "system"
+    password: "loopplusGoGo"
+    authentication: "login"
+    enable_starttls_auto: true
+
+production: 
+    address: "mail.looplus.com.tw"
+    domain: "looplus.com.tw"
+    user_name: "system"
+    password: "loopplusGoGo"
+    authentication: "login"
+    enable_starttls_auto: true
+
