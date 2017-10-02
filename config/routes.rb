@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     get '/service' => 'pages#service', :as => 'service'
     get '/no_d2' => 'pages#no_d2', :as => 'no_d2'
 
+    get '/notices/signup_email_sent' => 'notices#signup_email_sent', :as => 'notices_signup'
     resources :articles
   end
 

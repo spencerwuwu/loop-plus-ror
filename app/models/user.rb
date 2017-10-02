@@ -4,6 +4,7 @@ class User < ApplicationRecord
   mount_uploader :id_pic_front, LicenseUploader
   mount_uploader :id_pic_rear, LicenseUploader
   has_many :user_uses
+  has_many :orders
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
