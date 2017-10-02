@@ -23,7 +23,25 @@ function headerTransform() {
 
 }
 
+function mapResize() {
+  var width = $(window).width();
+  if (width >= 458) {
+    $("#map").css("height", $("#map").width()/5*3);
+  } else {
+    $("#map").css("height", $("#map").width()/4*5);
+  }
+}
+
 $(document).ready(function() {
+  // Map
+
+  mapResize();
+  $(window).resize(function() {
+    mapResize();
+  });
+
+
+
   // Header for index
   $("#header").hover(
     function() {
