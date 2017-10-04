@@ -28,6 +28,11 @@ Rails.application.routes.draw do
     resources :articles
   end
 
+  # scope for removing '/tail' in the path
+  scope module: "tail" do
+    get '/tail/' => 'pages#index', :as => 'tail'
+  end
+
 
   namespace :admin do
     resources :articles

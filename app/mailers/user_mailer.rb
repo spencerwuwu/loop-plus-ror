@@ -5,9 +5,9 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.notify_comment.subject
   #
-  def notify_comment
-    @greeting = "Hi"
+  def notify_comment(user, topic, message)
+    @message = message
 
-    mail(:to => "spencerwu85@gmail.com",  :subject => "New Comment")
+    mail(:to => user,  :subject => topic)
   end
 end
