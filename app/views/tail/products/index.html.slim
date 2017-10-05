@@ -1,0 +1,23 @@
+- content_for(:title) { '商品總表' }
+javascript:
+  document.getElementById("products_index").classList.add("active");
+
+.ui.primary.button onclick='window.location.href="#{new_tail_product_path()};"'
+  |New
+
+table.ui.celled.striped.table
+  thead
+    tr
+      th colspan="3"
+        |商品列表
+  tbody
+    - @products.each do |product|
+      tr
+        td.collapsing
+          |#{product.title}
+        td
+          |#{product.description}
+        td.right.aligned.collapsing
+          .ui.primary.button onclick='window.location.href="#{tail_product_path(product)};"'
+            |edit
+

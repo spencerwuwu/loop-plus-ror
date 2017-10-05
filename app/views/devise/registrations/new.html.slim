@@ -46,6 +46,13 @@
       = f.label :email
       = f.email_field :email, autofocus: true , class: "long-input"
 
+    .field 
+      .title
+        a href="#"
+          |Loop+ 隱私政策
+		= f.check_box :e_paper, required: "required"
+		= f.label :e_paper, "我已完整閱讀使用條款，並了解與同意相關條款和注意事項。"
+
 
     .actions
       = f.submit "會員註冊"
