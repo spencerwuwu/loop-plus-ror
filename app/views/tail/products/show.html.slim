@@ -1,0 +1,15 @@
+- content_for(:title) { '商品詳細' }
+javascript:
+  document.getElementById("products_index").classList.add("active");
+
+div.ui.segments
+  .ui.horizontal.segments
+    .ui.segment
+      |#{@product.title}
+    .ui.segment
+      |#{@product.price} 元
+    .ui.segment
+      |#{@product.orders.count} 筆購買
+  .ui.segment
+    |#{@product.description}
+

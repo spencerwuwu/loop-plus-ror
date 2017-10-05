@@ -17,6 +17,8 @@ table.ui.celled.striped.table
           |#{product.title}
         td
           |#{product.description}
+        td.collapsing
+          |#{product.orders.count} 筆購買
         td.right.aligned.collapsing
           .ui.primary.button onclick='window.location.href="#{tail_product_path(product)};"'
             |edit
