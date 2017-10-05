@@ -1,0 +1,2 @@
+module Tail::ProductsHelper
+end

@@ -1,4 +1,5 @@
 class Tail::OrdersController < ApplicationController
+  layout 'tail'
 
   def index
     @orders = Order.all()

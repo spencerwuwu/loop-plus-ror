@@ -12,13 +12,19 @@ Role.create([
   {id: 1, name: 'admin'}
 ])
 Role.create([
-  {id: 2, name: 'staff'}
+  {id: 2, name: 'manager'}
 ])
 Role.create([
-  {id: 3, name: 'member'}
+  {id: 3, name: 'staff'}
 ])
 Role.create([
-  {id: 4, name: 'pending'}
+  {id: 4, name: 'member'}
+])
+Role.create([
+  {id: 5, name: 'pending'}
+])
+Role.create([
+  {id: 6, name: 'un_finish'}
 ])
 
 User.create([
@@ -29,6 +35,6 @@ User.create([
 }
 ])
 
-user = User.find(1);
-user.add_role admin;
-user.save;
+user = User.find(1)
+user.add_role "admin"
+user.save

@@ -25,7 +25,9 @@ Rails.application.routes.draw do
     get '/no_d2' => 'pages#no_d2', :as => 'no_d2'
 
     get '/notices/signup_email_sent' => 'notices#signup_email_sent', :as => 'notices_signup'
-    resources :articles
+    resources :articles, only: [:index, :show]
+    resources :orders, only: [:create, :show]
+    resources :products, only: [:create, :show]
   end
 
   # scope for removing '/tail' in the path
@@ -33,6 +35,13 @@ Rails.application.routes.draw do
     get '/tail/' => 'pages#index', :as => 'tail'
   end
 
+  namespace :tail do
+    resources :products
+    resources :orders, except: [:create]
+    resources :refunds, except: [:create]
+
+    root to: "pages#index"
+  end
 
   namespace :admin do
     resources :articles
@@ -43,6 +52,9 @@ Rails.application.routes.draw do
     resources :vehicles
     resources :stations
     resources :user_uses
+    resources :products
+    resources :orders
+    resources :refunds
 
     root to: "users#index"
   end

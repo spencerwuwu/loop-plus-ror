@@ -5,6 +5,7 @@ class User < ApplicationRecord
   mount_uploader :id_pic_rear, LicenseUploader
   has_many :user_uses
   has_many :orders
+  has_many :refunds
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -17,7 +18,7 @@ class User < ApplicationRecord
   after_create :assign_default_role
 
   def assign_default_role
-    self.add_role(:pending) if self.roles.blank?
+    self.add_role(:un_finish) if self.roles.blank?
   end
 
 
@@ -37,6 +38,7 @@ class User < ApplicationRecord
     end
   end
 
+  # omniauth is currently unused
   def self.from_omniauth_nctu(response)
     auth = JSON.parse(response)
     where(provider: "nctu", uid: auth['username']).first_or_create do |user|
