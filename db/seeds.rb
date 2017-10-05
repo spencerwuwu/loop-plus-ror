@@ -29,12 +29,49 @@ Role.create([
 
 User.create([
   {email: 'gg@gmail.com',
-   name: 'gg',
+   name: '歐巴馬英九孔鏘',
    personal_id: 'a12345678',
-   password: 'ggininder'
+   password: 'ggininder',
+   confirmed_at: Time.now
 }
 ])
 
 user = User.find(1)
 user.add_role "admin"
 user.save
+
+def dummy_text
+  "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem."
+end
+
+Article.create([
+  title: "Spencer is handsome",
+  subtitle: "so handsome",
+  content: dummy_text,
+  created_at: Time.now
+])
+Article.create([
+  title: "Spencer is so handsome",
+  subtitle: "very handsome",
+  content: dummy_text,
+  created_at: Time.now
+])
+Article.create([
+  title: "Spencer is so handsome",
+  subtitle: "extremely handsome",
+  content: dummy_text,
+  created_at: Time.now
+])
+
+Product.create([
+  title: "100元優惠專案",
+  price: "100",
+  description: "100!~~~~",
+])
+
+
+Product.create([
+  title: "200元優惠專案",
+  price: "200",
+  description: "100!~~~~100!~~~~200!!!",
+])

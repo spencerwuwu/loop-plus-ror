@@ -2,8 +2,17 @@
 javascript:
   document.getElementById("products_index").classList.add("active");
 
-.ui.primary.button onclick='window.location.href="#{new_tail_product_path()};"'
-  |New
+
+.ui.top.secondary.pointing.menu
+  .ui.item
+    i.plus.icon.blue
+    = link_to "新商品", new_tail_product_path()
+  .right.menu
+    .ui.right.aligned.category.search.item
+      .ui.transparent.icon.input
+        input.prompt placeholder="Search..." type="text"
+        i.search.link.icon
+
 
 table.ui.celled.striped.table
   thead

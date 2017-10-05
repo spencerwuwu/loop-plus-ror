@@ -8,17 +8,25 @@ html
     = stylesheet_link_tag    'tail', media: 'all'
     = javascript_include_tag 'tail'
 
-  body style="padding: 20px"
-    .ui.header 
-      h1
-        |#{content_for(:title)}
-    .ui.divider
-    .ui.pointing.menu
-      = link_to '商品', tail_products_path, class: "item", id: "products_index"
-      = link_to '訂單', tail_orders_path, class: "item", id: "orders_index"
+  body
+    .outer-container
+      .ui.header 
+        h1
+          |Loop+後台管理
+      .ui.divider
+      .popout
+        = notice
+      .ui.grid
+        .three.wide.column
+          /.ui.vertical.fluid.tabular.menu
+          .ui.inverted.vertical.pointing.menu
+            = link_to '商品', tail_products_path, class: "item", id: "products_index"
+            = link_to '訂單', tail_orders_path, class: "item", id: "orders_index"
+        .thirteen.wide.strentched.column
+          .ui.header 
+            h2
+              |#{content_for(:title)}
+          .ui.container
+            = yield 
 
 
-    .popout
-      = notice
-    .body-container#main-body
-      = yield 
