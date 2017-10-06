@@ -9,7 +9,18 @@ body
   display: flex
 
 .outer-container
-  max-width: 1200px
   width: 95%
   display: block
   position: relative
+
+#wide
+  @media screen and (min-width: 768px)
+    display: inline-block
+  @media screen and (max-width: 767px)
+    display: none
+
+#narrow
+  @media screen and (min-width: 768px)
+    display: none
+  @media screen and (max-width: 767px)
+    display: flex

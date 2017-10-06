@@ -1,17 +1,13 @@
-- content_for(:title) { '商品總表' }
+- content_for(:title) { '用戶總表' }
 javascript:
-  document.getElementById("products_index").classList.add("active");
-  document.getElementById("products_index_n").classList.add("active");
-
+  document.getElementById("users_index").classList.add("active");
+  document.getElementById("users_index_n").classList.add("active");
 
 .ui.top.pointing.menu
-  .ui.item
-    i.plus.icon.blue
-    = link_to "新商品", new_tail_product_path()
   .right.menu
     .ui.right.aligned.category.search.item
       .ui.transparent.icon.input
-        = form_tag(tail_products_path, :method => "get", id: "search-form") do
+        = form_tag(tail_users_path, :method => "get", id: "search-form") do
           = text_field_tag :search, params[:search], class:"prompt", placeholder: "Search..."
           = button_tag(type: "submit", class: "ui basic icon button", style: "display: none") do
             i.search.link.icon
@@ -24,19 +20,20 @@ table.ui.celled.striped.table
     tr
       th colspan="4"
         h4
-          |商品列表
+          |用戶列表
   tbody
-    - if @products.present?
-      - @products.each do |product|
+    - if @users.present?
+      - @users.each do |user|
         tr
           td.collapsing
-            |#{product.title}
+            |#{user.name}
           td
-            |#{product.description}
+            |#{user.email}
           td.collapsing
-            |#{product.orders.count} 筆購買
+            - user.roles.each do |role|
+              |#{role.name}, 
           td.right.aligned.collapsing
-            .ui.primary.button onclick='window.location.href="#{tail_product_path(product)};"'
+            .ui.primary.button onclick='window.location.href="#{tail_user_path(user)};"'
               |detail
     - else
       tr

@@ -37,10 +37,12 @@ $(document).ready(function() {
     }, function(e) {
       e.preventDefault();
       $(".header-wide-sub-container").fadeOut();
-      var yy = $(this).scrollTop();
-      if (yy <= 350) {
-        $("#header").css("background", "rgba(56,56,56,"+yy/350+")");
-        $("#header").css("box-shadow", "none");
+      if ($(".index-slide-container").is(":visible")) {
+        var yy = $(this).scrollTop();
+        if (yy <= 350) {
+          $("#header").css("background", "rgba(56,56,56,"+yy/350+")");
+          $("#header").css("box-shadow", "none");
+        }
       }
 
     });

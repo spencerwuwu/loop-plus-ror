@@ -16,17 +16,37 @@ html
       .ui.divider
       .popout
         = notice
-      .ui.grid
-        .three.wide.column
+      .ui.menu#narrow
+        = link_to tail_products_path do
+          .item#products_index_n
+            |商品
+        = link_to tail_orders_path do
+          .item#orders_index_n
+            |訂單
+        = link_to tail_users_path do
+          .item#users_index_n
+            |用戶
+
+      .ui.stackable.grid
+        .four.wide.column#wide
           /.ui.vertical.fluid.tabular.menu
           .ui.inverted.vertical.pointing.menu
-            = link_to '商品', tail_products_path, class: "item", id: "products_index"
-            = link_to '訂單', tail_orders_path, class: "item", id: "orders_index"
-        .thirteen.wide.strentched.column
-          .ui.header 
-            h2
-              |#{content_for(:title)}
-          .ui.container
+            = link_to tail_products_path do
+              h3.item#products_index
+                |商品
+            = link_to tail_orders_path do
+              h3.item#orders_index
+                |訂單
+            = link_to tail_users_path do
+              h3.item#users_index
+                |用戶
+            
+        .twelve.wide.strentched.column
+          .ui.vertical.segment
+            .ui.header 
+              h2
+                |#{content_for(:title)}
+          .ui.vertical.segment
             = yield 
 
 

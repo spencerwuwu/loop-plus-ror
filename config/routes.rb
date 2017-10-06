@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     resources :products
     resources :orders, except: [:create]
     resources :refunds, except: [:create]
+    resources :users
 
     root to: "pages#index"
   end

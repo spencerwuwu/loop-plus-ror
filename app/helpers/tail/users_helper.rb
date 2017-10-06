@@ -1,0 +1,2 @@
+module Tail::UsersHelper
+end

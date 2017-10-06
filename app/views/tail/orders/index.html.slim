@@ -1,13 +1,18 @@
 - content_for(:title) { '訂單總表' }
 javascript:
   document.getElementById("orders_index").classList.add("active");
+  document.getElementById("orders_index_n").classList.add("active");
 
-.ui.top.secondary.pointing.menu
+.ui.top.pointing.menu
   .right.menu
     .ui.right.aligned.category.search.item
       .ui.transparent.icon.input
-        input.prompt placeholder="Search..." type="text"
-        i.search.link.icon
+        = form_tag(tail_products_path, :method => "get", id: "search-form") do
+          = text_field_tag :search, params[:search], class:"prompt", placeholder: "Search..."
+          = button_tag(type: "submit", class: "ui basic icon button" , style: "display: none") do
+            i.search.link.icon
+          button.circular.ui.mini.icon.button.deleteicon onclick="var input = this.previousSibling.previousSibling; input.value = ''; input.focus();"
+            i.icon.remove
 
 table.ui.celled.striped.table
   thead
