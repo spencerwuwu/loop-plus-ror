@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     get '/notices/signup_email_sent' => 'notices#signup_email_sent', :as => 'notices_signup'
     resources :articles, only: [:index, :show]
     resources :orders, only: [:create, :show]
-    resources :products, only: [:create, :show]
+    resources :products, only: [:index, :show]
   end
 
   # scope for removing '/tail' in the path
@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     resources :orders, except: [:create]
     resources :refunds, except: [:create]
     resources :users
+    resources :gifts
 
     root to: "pages#index"
   end

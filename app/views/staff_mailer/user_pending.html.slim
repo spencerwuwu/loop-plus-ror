@@ -1,0 +1,5 @@
+h1
+  |會員 #{user.name} 送出審核
+
+p
+  = link_to "點此(請先登入有管理權限的帳號）", tail_user_path(user.id)

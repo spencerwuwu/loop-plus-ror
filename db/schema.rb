@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171005110003) do
+ActiveRecord::Schema.define(version: 20171007161632) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -41,6 +41,14 @@ ActiveRecord::Schema.define(version: 20171005110003) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["type"], name: "index_ckeditor_assets_on_type"
+  end
+
+  create_table "gifts", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -159,6 +167,13 @@ ActiveRecord::Schema.define(version: 20171005110003) do
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "users_gifts", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "gift_id"
+    t.index ["gift_id"], name: "index_users_gifts_on_gift_id"
+    t.index ["user_id"], name: "index_users_gifts_on_user_id"
   end
 
   create_table "users_roles", id: false, force: :cascade do |t|

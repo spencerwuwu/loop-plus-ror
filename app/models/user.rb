@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :user_uses
   has_many :orders
   has_many :refunds
+  has_and_belongs_to_many :gifts
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -21,6 +22,10 @@ class User < ApplicationRecord
     self.add_role(:un_finish) if self.roles.blank?
   end
 
+  def self.search(search)
+    where("name LIKE ?", "%#{search}%")
+    where("email LIKE ?", "%#{search}%")
+  end
 
   # Only allow letter, number, underscore and punctuation.
   validates_format_of :personal_id, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true

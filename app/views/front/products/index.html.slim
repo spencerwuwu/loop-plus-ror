@@ -1,0 +1,6 @@
+- content_for(:title) { '儲值點數' }
+
+- @products.each do |product|
+  = link_to product_path(product)
+    = product.title
+
