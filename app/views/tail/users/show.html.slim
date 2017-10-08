@@ -1,0 +1,84 @@
+- content_for(:title) { "#{@user.name}" }
+javascript:
+  document.getElementById("users_index").classList.add("active");
+  document.getElementById("users_index_n").classList.add("active");
+
+div.ui.segments
+  .ui.horizontal.segments
+    .ui.segment
+      strong 
+        |姓名： 
+      |#{@user.name}
+    .ui.segment
+      strong 
+        |ID： 
+      |#{@user.personal_id}
+    .ui.segment
+      strong
+        |性別： 
+      |#{@user.gender}
+
+  .ui.segment
+    strong
+      |地址：
+    |#{@user.address}
+  .ui.horizontal.segments
+    .ui.segment
+      strong
+        |駕照正面：
+      br
+      br
+      - if @user.license_pic_front.present?
+        = image_tag "#{@user.license_pic_front}", class: "ui centered medium image"
+      - else
+        = image_tag "image.png", class: "ui centered medium image"
+    .ui.segment
+      strong
+        |駕照反面：
+      br
+      br
+      - if @user.license_pic_rear.present?
+        = image_tag "#{@user.license_pic_rear}", class: "ui centered medium image"
+      - else
+        = image_tag "image.png", class: "ui centered medium image"
+
+  .ui.horizontal.segments
+    .ui.segment
+      strong
+        |身份證正面：
+      br
+      br
+      - if @user.id_pic_front.present?
+        = image_tag "#{@user.id_pic_front}", class: "ui centered medium image"
+      - else
+        = image_tag "image.png", class: "ui centered medium image"
+    .ui.segment
+      strong
+        |身份證反面：
+      br
+      br
+      - if @user.id_pic_rear.present?
+        = image_tag "#{@user.id_pic_rear}", class: "ui centered medium image"
+      - else
+        = image_tag "image.png", class: "ui centered medium image"
+
+- if @user.has_role?("pending")
+  br
+  button.positive.ui.button onclick='window.location.href="/user/user_auth/#{@user.id}/";'
+    |通過審核
+
+  /= form_tag(tail_user_auth_path(@user.id), method: 'post') do 
+    button.positive.ui.button
+
+  .ui.horizontal.divider
+    |or
+
+  .ui.form
+    .field
+      label
+        |退回原因
+      textarea id="reason"
+
+  br
+  button.negative.ui.button onclick='window.location.href="/user/user_reject/#{@user.id}/"+document.getElementById("reason").value;'
+    |退回審核

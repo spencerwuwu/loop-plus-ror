@@ -1,0 +1,11 @@
+tr
+  td.collapsing
+    |#{user.name}
+  td
+    |#{user.email}
+  td.collapsing
+    - user.roles.each do |role|
+      |#{role.name}, 
+  td.right.aligned.collapsing
+    .ui.primary.button onclick='window.location.href="#{tail_user_path(user)};"'
+      |detail

@@ -9,14 +9,22 @@ class UserMailer < ApplicationMailer
   def user_success(user)
     @user = user
 
-    mail(:to => user.common_email,  :subject => "Loop+會員審核成功!")
+    if user.common_email.present?
+      mail(:to => user.common_email,  :subject => "Loop+會員審核成功!")
+    else
+      mail(:to => user.email,  :subject => "Loop+會員審核成功!")
+    end
   end
 
   def user_reject(user, reason)
     @user = user
     @reason = reason
 
-    mail(:to => user.common_email,  :subject => "Loop+會員失敗:(")
+    if user.common_email.present?
+      mail(:to => user.common_email,  :subject => "Loop+會員失敗:(")
+    else
+      mail(:to => user.email,  :subject => "Loop+會員失敗:(")
+    end
   end
 
   def notify_comment(user, topic, message)

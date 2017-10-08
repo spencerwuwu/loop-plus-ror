@@ -1,11 +1,11 @@
-- content_for(:title) { '用戶總表' }
+- content_for(:title) { '待審核用戶' }
 javascript:
   document.getElementById("users_index").classList.add("active");
   document.getElementById("users_index_n").classList.add("active");
 
 .ui.top.pointing.menu
   = render(partial: 'tail/users/submenu')
-  /.right.menu
+  .right.menu
     .ui.right.aligned.category.search.item
       .ui.transparent.icon.input
         = form_tag(tail_users_path, :method => "get", id: "search-form") do
@@ -15,6 +15,8 @@ javascript:
           button.circular.ui.mini.icon.button.deleteicon onclick="var input = this.previousSibling.previousSibling; input.value = ''; input.focus();"
             i.icon.remove
 
+javascript:
+  document.getElementById("pending_subindex").classList.add("active");
 
 table.ui.celled.striped.table
   thead
@@ -23,25 +25,7 @@ table.ui.celled.striped.table
         h4
           |待審核列表
   tbody
-    - @users.each_with_index do |user, idx|
-      - if idx < 5
-        - if user.has_role? "pending"
-            = render(partial: 'tail/users/index_table', locals: {user: user})
-    tr
-      td colspan="4"
-        = link_to "查看更多", tail_user_pending_path, class: "ui"
+    - @users.each do |user|
+        = render(partial: 'tail/users/index_table', locals: {user: user})
 
-table.ui.celled.striped.table
-  thead
-    tr
-      th colspan="4"
-        h4
-          |正式會員
-  tbody
-    - @users.each_with_index do |user, idx|
-      - if user.has_role? "member"
-          = render(partial: 'tail/users/index_table', locals: {user: user})
-      - else
-    tr
-      td colspan="4"
-        = link_to "查看更多", tail_user_member_path, class: "ui"
+

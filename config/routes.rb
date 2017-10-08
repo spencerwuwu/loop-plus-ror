@@ -24,6 +24,10 @@ Rails.application.routes.draw do
     get '/service' => 'pages#service', :as => 'service'
     get '/no_d2' => 'pages#no_d2', :as => 'no_d2'
 
+
+    get '/user/to_pending' => 'user#to_pending', :as  => 'user_to_pending'
+    get '/user/back_pending' => 'user#back_pending', :as  => 'user_back_pending'
+
     get '/notices/signup_email_sent' => 'notices#signup_email_sent', :as => 'notices_signup'
     resources :articles, only: [:index, :show]
     resources :orders, only: [:create, :show]
@@ -33,6 +37,9 @@ Rails.application.routes.draw do
   # scope for removing '/tail' in the path
   scope module: "tail" do
     get '/tail/' => 'pages#index', :as => 'tail'
+
+    get '/user/user_auth/:id' => 'users#user_auth', :as  => 'tail_user_auth'
+    get '/user/user_reject/:id/:reason' => 'users#user_reject', :as  => 'tail_user_reject'
   end
 
   namespace :tail do
@@ -43,6 +50,10 @@ Rails.application.routes.draw do
     resources :gifts
 
     root to: "pages#index"
+
+    get '/user/status_pending' => 'users#status_pending', :as => 'user_pending'
+    get '/user/status_member' => 'users#status_member', :as => 'user_member'
+
   end
 
   namespace :admin do

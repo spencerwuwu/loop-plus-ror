@@ -13,8 +13,8 @@ class Front::UserController < ApplicationController
   end
 
   def to_pending
-    user.remove_role "un_finish"
-    user.add_role "pending"
+    user.remove_role(un_finish)
+    user.add_role(pendin)
 
     StaffMailer.user_pending(current_user).deliver.now!
     flash[:notice] = "已收到！請靜代審核"
@@ -22,8 +22,8 @@ class Front::UserController < ApplicationController
   end
 
   def back_pending
-    user.remove_role "member"
-    user.add_role "pending"
+    user.remove_role(member)
+    user.add_role(pending)
 
     StaffMailer.user_pending_again(current_user).deliver.now!
     render_to user_root_path
