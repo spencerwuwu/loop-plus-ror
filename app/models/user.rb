@@ -15,20 +15,33 @@ class User < ApplicationRecord
 
   # Virtual attribute for authenticating by either personal_id or email
   # This is in addition to a real persisted field like 'personal_id'
+
+  # Only allow personal_id form.
+  validates :personal_id,
+  :presence => true, 
+  :uniqueness => true,
+  :format => { 
+    with: /^[A-Z][0-9]*$/, 
+    multiline: true,
+    message: "身份證格式不符合或已註冊" 
+  }
+
+  validates :name, presence: true
+  validates :gender, presence: true
   attr_accessor :login
   after_create :assign_default_role
 
+  # Create default role
   def assign_default_role
     self.add_role(:un_finish) if self.roles.blank?
   end
 
+  # Search mehtod for view
   def self.search(search)
     where("name LIKE ?", "%#{search}%")
     where("email LIKE ?", "%#{search}%")
+    where("personal_id LIKE ?", "%#{search}%")
   end
-
-  # Only allow letter, number, underscore and punctuation.
-  validates_format_of :personal_id, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup

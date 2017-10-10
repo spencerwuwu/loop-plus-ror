@@ -1,0 +1,16 @@
+br
+button.positive.ui.button onclick='window.location.href="/user/user_auth/#{user.id}/";'
+  |通過審核
+
+.ui.horizontal.divider
+  |or
+
+.ui.form
+  .field
+    label
+      |退回原因
+    textarea id="reason"
+
+br
+button.negative.ui.button onclick='window.location.href="/user/user_reject/#{user.id}/"+document.getElementById("reason").value;'
+  |退回審核

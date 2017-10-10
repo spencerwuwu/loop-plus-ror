@@ -30,7 +30,8 @@ Role.create([
 User.create([
   {email: 'gg@gmail.com',
    name: '歐巴馬英九孔鏘',
-   personal_id: 'a12345678',
+   personal_id: 'A12345678',
+   gender: 'male',
    password: 'ggininder',
    confirmed_at: Time.now
 }

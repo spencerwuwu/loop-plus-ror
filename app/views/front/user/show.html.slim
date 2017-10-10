@@ -37,6 +37,10 @@
       button Onclick='window.location.href="#{edit_user_info_path};"'
         |修改會員資料
 
+      - if current_user.has_role?("un_finish")
+        button onclick='window.location.href="#{user_to_pending_path}"'
+          |送出審核
+
 javascript:
   document.getElementById("show_user").classList.add("current");
   document.getElementById("show_user_arrow").setAttribute("style", "display: block;");

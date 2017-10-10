@@ -1,0 +1,7 @@
+tr
+  td.collapsing
+    |#{order.created_date}
+  td.collapsing.right.aligned
+    |#{order.aasm}
+  td.right.aligned.collapsing
+    = link_to "detail", tail_order_path(order), class: "ui primary button"

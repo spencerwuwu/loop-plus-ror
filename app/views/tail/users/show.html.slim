@@ -63,22 +63,16 @@ div.ui.segments
         = image_tag "image.png", class: "ui centered medium image"
 
 - if @user.has_role?("pending")
-  br
-  button.positive.ui.button onclick='window.location.href="/user/user_auth/#{@user.id}/";'
-    |通過審核
+  = render(partial: 'tail/users/auth_controller', locals: {user: @user})
 
-  /= form_tag(tail_user_auth_path(@user.id), method: 'post') do 
-    button.positive.ui.button
-
-  .ui.horizontal.divider
-    |or
-
-  .ui.form
-    .field
-      label
-        |退回原因
-      textarea id="reason"
-
-  br
-  button.negative.ui.button onclick='window.location.href="/user/user_reject/#{@user.id}/"+document.getElementById("reason").value;'
-    |退回審核
+- if @user.has_role?("member")
+  table.ui.celled.striped.table
+    thead
+      tr
+        th colspan="4"
+          h4
+            |購買列表
+    tbody
+      - @user.orders.each_with_index do |order, idx|
+        - if idx < 5
+          = render(partial: 'tail/orders/order_list', locals: {order: order})

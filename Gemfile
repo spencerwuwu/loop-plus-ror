@@ -29,6 +29,7 @@ gem 'administrate', github: 'thoughtbot/administrate'
 gem 'bourbon'
 gem 'ruby-units', '~> 2.1.0'
 gem 'database_cleaner'
+gem 'aasm'
 
 # User
 gem 'devise', "~> 4.3.0"
