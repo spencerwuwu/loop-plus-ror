@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   scope module: "tail" do
     get '/tail/' => 'pages#index', :as => 'tail'
 
-    get '/user/user_auth/:id' => 'users#user_auth', :as  => 'tail_user_auth'
+    get '/user/user_auth/:id/:reason' => 'users#user_auth', :as  => 'tail_user_auth'
     get '/user/user_reject/:id/:reason' => 'users#user_reject', :as  => 'tail_user_reject'
   end
 
@@ -53,6 +53,7 @@ Rails.application.routes.draw do
 
     get '/user/status_pending' => 'users#status_pending', :as => 'user_pending'
     get '/user/status_member' => 'users#status_member', :as => 'user_member'
+    get '/user/status_un_finish' => 'users#status_un_finish', :as => 'user_un_finish'
 
   end
 

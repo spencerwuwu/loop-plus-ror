@@ -1,0 +1,23 @@
+[questions]
+1. Virtual account? yes
+2. Content of tails
+
+
+[requirement]
+1. Front design
+2. Email design
+
+
+[TODOs head]
+
+[TODOs tail]
+0. Virtual Account number -> TODO generating way
+1. Tail
+	1.1 Users index -> summary graph
+	1.1.1 User menu: un_finish, pending, member, all
+	1.2.1 User show - un_finish: same as signup
+	1.2.2 User show - pending: 
+		auth - access needs reason too.
+	1.2 User show ->
+		校級資訊(註冊時就要)
+		

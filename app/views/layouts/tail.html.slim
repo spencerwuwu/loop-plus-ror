@@ -29,17 +29,31 @@ html
 
       .ui.stackable.grid
         .four.wide.column#wide
-          /.ui.vertical.fluid.tabular.menu
-          .ui.inverted.vertical.pointing.menu
-            = link_to tail_products_path do
-              h3.item#products_index
+          .ui.vertical.menu
+            .item
+              h4.ui
                 |商品
-            = link_to tail_orders_path do
-              h3.item#orders_index
+              .menu
+                = link_to tail_products_path do
+                  .item
+                    |商品1
+                = link_to tail_products_path do
+                  .item
+                    |商品1
+            .item
+              h4.ui
                 |訂單
-            = link_to tail_users_path do
-              h3.item#users_index
-                |用戶
+              .menu
+                = link_to tail_orders_path do
+                  .ui.item
+                    |訂單
+            .item
+              h4.ui
+                |使用者
+              .menu
+                = link_to tail_users_path do
+                  .item
+                    |總表
             
         .twelve.wide.strentched.column
           .ui.vertical.segment

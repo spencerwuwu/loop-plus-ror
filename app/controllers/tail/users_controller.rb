@@ -2,7 +2,6 @@ class Tail::UsersController < ApplicationController
   layout 'tail'
 
   def index
-    @users = User.all()
 
   end
 
@@ -24,9 +23,28 @@ class Tail::UsersController < ApplicationController
     end
   end
 
+  def status_un_finish
+    @users = User.with_role(:member)
+    if params[:search]
+      @users = User.with_role(:member).search(params[:search]).order("created_at DESC")
+    else
+      @users = User.with_role(:member).order('created_at DESC')
+    end
+  end
+
+  def status_all
+    @users = User.all()
+    if params[:search]
+      @users = User.all().search(params[:search]).order("created_at DESC")
+    else
+      @users = User.all().order('created_at DESC')
+    end
+  end
+
   def show
     @user =  User.find(params[:id])
   end
+
 
   def user_auth
     @user = User.find(params[:id])
@@ -48,5 +66,6 @@ class Tail::UsersController < ApplicationController
     UserMailer.user_reject(@user, @reason).deliver
     redirect_to tail_users_path
   end
+
 
 end
