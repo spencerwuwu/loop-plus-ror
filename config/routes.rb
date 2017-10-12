@@ -71,6 +71,7 @@ Rails.application.routes.draw do
     resources :products
     resources :orders
     resources :refunds
+    resources :payment_configs
 
     root to: "users#index"
   end

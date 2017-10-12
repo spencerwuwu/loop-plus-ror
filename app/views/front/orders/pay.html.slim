@@ -1,18 +1,22 @@
 
 h1 瀏覽器將自動跳轉至支付頁面
 
-= form_tag @config.api do
+= form_tag @config.api, id: "payment_form" do
   = hidden_field_tag 'MerchantID', @config.merchant_id
-  = hidden_field_tag 'RespondType', @config.respond_type>
-  = hidden_field_tag 'CheckValue', @checkvalue
-  = hidden_field_tag 'TimeStamp', @order.timestamp
+  = hidden_field_tag 'TradeInfo', @trade_info
+  = hidden_field_tag 'TradeSha', @trade_sha
   = hidden_field_tag 'Version', @config.version
+  = hidden_field_tag 'RespondType', @config.respond_type
+  = hidden_field_tag 'TimeStamp', @order.timestamp
   = hidden_field_tag 'LangType', @config.lang_type
   = hidden_field_tag 'MerchantOrderNo', @order.merchant_order_no
   = hidden_field_tag 'Amt', @order.product.price
   = hidden_field_tag 'ItemDesc', @order.product.title
-  = hidden_field_tag 'Email', @order.email
+  = hidden_field_tag 'Email', @email
   = hidden_field_tag 'LoginType', @config.login_type
   = hidden_field_tag 'CREDIT', @config.credit
   = hidden_field_tag 'CVS', @config.cvs
   = hidden_field_tag 'BARCODE', @config.barcode
+
+javascript:
+  document.getElementById("payment_form").submit();

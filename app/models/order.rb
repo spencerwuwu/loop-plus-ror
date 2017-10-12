@@ -40,13 +40,40 @@ class Order < ApplicationRecord
     end
   end
 
-  def checkvalue(config)
-    raw = "HashKey=#{config.hash_key}&Amt=#{product.price}&MerchantID=#{config.merchant_id}&MerchantOrderNo=#{merchant_order_no}&TimeStamp=#{timestamp}&Version=#{config.version}&HashIV=#{config.hash_iv}"
-    return Digest::SHA256.hexdigest(raw).upcase
+  def self.find_by_merchant_order_no(merchant_order_no)
+    return Order.find_by_id(merchant_order_no.last(5).to_i)
+  end
+
+  def merchant_order_no
+    "#{created_at.strftime('%Y%m%d%H%M%S')}#{"%05d" % id}"
   end
 
   def timestamp
     created_at.to_i
+  end
+
+
+  def trade_info(order, config, email)
+    raw = "MerchantID=#{config.merchant_id}&Version=#{config.version}&RespondType=#{config.respond_type}&TimeStamp=#{timestamp}&LangType=#{config.lang_type}&MerchantOrderNo=#{merchant_order_no}&Amt=#{order.product.price}&ItemDesc=#{order.product.title}&Email=#{@email}&LoginType=#{config.login_type}&CREDIT=#{config.credit}&CVS=#{config.cvs}&BARCODE=#{config.barcode}"
+
+    Rails.logger.info "raw => #{raw}"
+
+    cipher = OpenSSL::Cipher.new("aes-256-cbc")
+    cipher.encrypt
+    cipher.key = config.hash_key
+    cipher.iv = config.hash_iv
+    encrypted = cipher.update(raw) + cipher.final
+    encrypted_base64 = Base64.encode64(encrypted)
+    Rails.logger.info "enc => #{encrypted_base64}"
+    return encrypted_base64
+
+  end
+
+  def trade_sha(enc, config)
+    raw = "HashKey=#{config.hash_key}&#{enc}&HashIV=#{config.hash_iv}"
+    Rails.logger.info "raw2 => #{raw}"
+    Rails.logger.info "Digist: #{Digest::SHA256.hexdigest(raw).upcase}"
+    return Digest::SHA256.base64digest(raw).upcase
   end
 
   def update_payment_result(result)

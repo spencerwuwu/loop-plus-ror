@@ -12,7 +12,14 @@ class Front::OrdersController < ApplicationController
   def pay
     @order = Order.find(params[:id])
     @config = PaymentConfig.last
-    @checkvalue = @order.checkvalue(@config)
+    if current_user.common_email.present?
+      @email = current_user.common_email
+    else 
+      @email = current_user.email
+    end
+
+    @trade_info = @order.trade_info(@order, @config, @email)
+    @trade_sha = @order.trade_sha(@trade_info, @config)
   end
 
 

@@ -11,7 +11,7 @@ class CreatePaymentConfigs < ActiveRecord::Migration[5.1]
       t.string :credit, :string, default: "1"
       t.string :cvs, :string, default: "1"
       t.string :barcode, :string, default: "1"
-      t.string :version, :string, default: "1,4"
+      t.string :version, :string, default: "1.4"
       t.string :production_api, :string, default: "https://core.spgateway.com/MPG/mpg_gateway"
       t.string :staging_api, :string, default: "https://ccore.spgateway.com/MPG/mpg_gateway"
 

@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 20171011125509) do
     t.string "credit", default: "1"
     t.string "cvs", default: "1"
     t.string "barcode", default: "1"
-    t.string "version", default: "1,4"
+    t.string "version", default: "1.4"
     t.string "production_api", default: "https://core.spgateway.com/MPG/mpg_gateway"
     t.string "staging_api", default: "https://ccore.spgateway.com/MPG/mpg_gateway"
     t.datetime "created_at", null: false
