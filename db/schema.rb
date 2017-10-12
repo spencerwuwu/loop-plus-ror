@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171007161632) do
+ActiveRecord::Schema.define(version: 20171011125509) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -61,8 +61,28 @@ ActiveRecord::Schema.define(version: 20171007161632) do
     t.datetime "updated_at", null: false
     t.string "aasm_state", default: "created"
     t.string "status"
+    t.string "message"
     t.index ["product_id"], name: "index_orders_on_product_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "payment_configs", force: :cascade do |t|
+    t.string "description"
+    t.string "string", default: "https://ccore.spgateway.com/MPG/mpg_gateway"
+    t.string "hash_key"
+    t.string "hash_iv"
+    t.string "merchant_id"
+    t.string "respond_type", default: "JSON"
+    t.string "lang_type", default: "zh-tw"
+    t.string "login_type", default: "0"
+    t.string "credit", default: "1"
+    t.string "cvs", default: "1"
+    t.string "barcode", default: "1"
+    t.string "version", default: "1,4"
+    t.string "production_api", default: "https://core.spgateway.com/MPG/mpg_gateway"
+    t.string "staging_api", default: "https://ccore.spgateway.com/MPG/mpg_gateway"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
@@ -164,6 +184,9 @@ ActiveRecord::Schema.define(version: 20171007161632) do
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.boolean "e_paper"
+    t.string "department"
+    t.string "virtual_account"
+    t.integer "point"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

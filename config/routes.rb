@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     get '/no_d2' => 'pages#no_d2', :as => 'no_d2'
 
 
+    get '/pay/:id' => 'orders#pay', :as => 'pay_order'
+
     get '/user/to_pending' => 'user#to_pending', :as  => 'user_to_pending'
     get '/user/back_pending' => 'user#back_pending', :as  => 'user_back_pending'
 

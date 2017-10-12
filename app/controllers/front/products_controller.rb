@@ -5,6 +5,6 @@ class Front::ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    #@order = @product.orders.build
+    @order = @product.orders.build
   end
 end

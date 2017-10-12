@@ -1,0 +1,19 @@
+
+h1
+  |#{@product.title}
+  br
+h3
+  |共：
+  |#{@product.price}
+  br
+p
+  |#{@product.description}
+  br
+h1
+  |請填寫聯絡資訊
+  br
+
+= form_for @order do |f|
+  = f.hidden_field :user_id, :value => "#{current_user.id}"
+  = f.hidden_field :product_id, :value => "#{@product.id}"
+  = f.submit '前往付款頁面'
