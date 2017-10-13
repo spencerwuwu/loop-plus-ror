@@ -20,7 +20,7 @@ class Front::OrdersController < ApplicationController
 
     @raw = @order.get_raw(@order, @config, @email)
     @trade_info = @order.trade_info(@raw, @config)
-    @trade_sha = @order.trade_sha(@raw, @config)
+    @trade_sha = @order.trade_sha(@trade_info, @config)
 
     Rails.logger.info "trade_info => #{@trade_info}"
     Rails.logger.info "trade_sha => #{@trade_sha}"

@@ -61,16 +61,16 @@ class Order < ApplicationRecord
 
     Rails.logger.info "raw => #{raw}"
 
-    cipher = OpenSSL::Cipher.new("aes-256-cbc")
+    cipher = OpenSSL::Cipher::AES256.new(:CBC)
     cipher.encrypt
     cipher.key = config.hash_key
     cipher.iv = config.hash_iv
     Rails.logger.info "key => #{config.hash_key}"
     Rails.logger.info "iv => #{config.hash_iv}"
     encrypted = cipher.update(raw) + cipher.final
-    encrypted_base64 = Base64.encode64(encrypted)
-    Rails.logger.info "enc => #{encrypted_base64}"
-    return encrypted_base64
+    encrypted_tohex = encrypted.unpack('H*')
+    Rails.logger.info "enc => #{encrypted_tohex[0]}"
+    return encrypted_tohex
 
   end
 
