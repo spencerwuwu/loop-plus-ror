@@ -70,7 +70,7 @@ class Order < ApplicationRecord
     encrypted = cipher.update(raw) + cipher.final
     encrypted_tohex = encrypted.unpack('H*')
     Rails.logger.info "enc => #{encrypted_tohex[0]}"
-    return encrypted_tohex
+    return encrypted_tohex[0]
 
   end
 

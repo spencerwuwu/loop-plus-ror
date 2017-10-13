@@ -1,3 +1,4 @@
+- content_for(:title) { "Redirecting" }
 
 h1 瀏覽器將自動跳轉至支付頁面
 
@@ -17,6 +18,8 @@ h1 瀏覽器將自動跳轉至支付頁面
   = hidden_field_tag 'CREDIT', @config.credit
   = hidden_field_tag 'CVS', @config.cvs
   = hidden_field_tag 'BARCODE', @config.barcode
+  = hidden_field_tag 'ReturnURL', @config.return_url
+  = hidden_field_tag 'NotifyURL', @config.notify_url
 
 javascript:
   document.getElementById("payment_form").submit();

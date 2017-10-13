@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     get '/service' => 'pages#service', :as => 'service'
     get '/no_d2' => 'pages#no_d2', :as => 'no_d2'
 
+    post '/orders/notify' => 'orders#notify', :as => 'order_notify'
 
     get '/pay/:id' => 'orders#pay', :as => 'pay_order'
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171011125509) do
+ActiveRecord::Schema.define(version: 20171013103544) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -78,11 +78,15 @@ ActiveRecord::Schema.define(version: 20171011125509) do
     t.string "credit", default: "1"
     t.string "cvs", default: "1"
     t.string "barcode", default: "1"
-    t.string "version", default: "1.4"
+    t.string "version", default: "1,4"
     t.string "production_api", default: "https://core.spgateway.com/MPG/mpg_gateway"
     t.string "staging_api", default: "https://ccore.spgateway.com/MPG/mpg_gateway"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "production_return_url", default: "https://www.looplus.com.tw/user/show"
+    t.string "staging_return_url", default: "http://dev.looplus.com.tw:7122/user/show"
+    t.string "production_notify_url", default: "https://www.looplus.com.tw/orders/notify"
+    t.string "staging_notify_url", default: "http://dev.looplus.com.tw:7122/orders/notify"
   end
 
   create_table "products", force: :cascade do |t|
