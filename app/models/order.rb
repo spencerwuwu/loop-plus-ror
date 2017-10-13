@@ -53,8 +53,11 @@ class Order < ApplicationRecord
   end
 
 
-  def trade_info(order, config, email)
-    raw = "MerchantID=#{config.merchant_id}&Version=#{config.version}&RespondType=#{config.respond_type}&TimeStamp=#{timestamp}&LangType=#{config.lang_type}&MerchantOrderNo=#{merchant_order_no}&Amt=#{order.product.price}&ItemDesc=#{order.product.title}&Email=#{@email}&LoginType=#{config.login_type}&CREDIT=#{config.credit}&CVS=#{config.cvs}&BARCODE=#{config.barcode}"
+  def get_raw(order, config, email)
+    return "MerchantID=#{config.merchant_id}&Version=#{config.version}&RespondType=#{config.respond_type}&TimeStamp=#{timestamp}&LangType=#{config.lang_type}&MerchantOrderNo=#{merchant_order_no}&Amt=#{order.product.price}&ItemDesc=#{order.product.title}&Email=#{email}&LoginType=#{config.login_type}&CREDIT=#{config.credit}&CVS=#{config.cvs}&BARCODE=#{config.barcode}"
+  end
+
+  def trade_info(raw, config)
 
     Rails.logger.info "raw => #{raw}"
 
@@ -62,6 +65,8 @@ class Order < ApplicationRecord
     cipher.encrypt
     cipher.key = config.hash_key
     cipher.iv = config.hash_iv
+    Rails.logger.info "key => #{config.hash_key}"
+    Rails.logger.info "iv => #{config.hash_iv}"
     encrypted = cipher.update(raw) + cipher.final
     encrypted_base64 = Base64.encode64(encrypted)
     Rails.logger.info "enc => #{encrypted_base64}"
@@ -73,7 +78,7 @@ class Order < ApplicationRecord
     raw = "HashKey=#{config.hash_key}&#{enc}&HashIV=#{config.hash_iv}"
     Rails.logger.info "raw2 => #{raw}"
     Rails.logger.info "Digist: #{Digest::SHA256.hexdigest(raw).upcase}"
-    return Digest::SHA256.base64digest(raw).upcase
+    return Digest::SHA256.hexdigest(raw).upcase
   end
 
   def update_payment_result(result)
