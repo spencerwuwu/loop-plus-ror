@@ -1,4 +1,4 @@
-- content_for(:title) { "Redirecting" }
+- content_for(:title) { "跳轉畫面" }
 
 h1 瀏覽器將自動跳轉至支付頁面
 
@@ -15,11 +15,14 @@ h1 瀏覽器將自動跳轉至支付頁面
   = hidden_field_tag 'ItemDesc', @order.product.title
   = hidden_field_tag 'Email', @email
   = hidden_field_tag 'LoginType', @config.login_type
-  = hidden_field_tag 'CREDIT', @config.credit
-  = hidden_field_tag 'CVS', @config.cvs
-  = hidden_field_tag 'BARCODE', @config.barcode
+  = hidden_field_tag 'CREDIT', @credit
+  = hidden_field_tag 'UNIONPAY', @credit
+  = hidden_field_tag 'WEBATM', @atm
+  = hidden_field_tag 'VACC', @atm
+  = hidden_field_tag 'CVS', @cvs
+  = hidden_field_tag 'BARCODE', @barcode
   = hidden_field_tag 'ReturnURL', @config.return_url
-  = hidden_field_tag 'NotifyURL', @config.notify_url
+  /= hidden_field_tag 'NotifyURL', @config.notify_url
 
 javascript:
   document.getElementById("payment_form").submit();

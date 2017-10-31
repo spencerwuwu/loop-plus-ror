@@ -14,7 +14,57 @@ h1
   |請填寫聯絡資訊
   br
 
+div.payment_type onclick="update_payment();"
+  = radio_button_tag :payment_type, "0", :checked =>"checked"
+  = label :payment_type, "超商條碼繳費"
+
+  = radio_button_tag :payment_type, "1"
+  = label :payment_type, "超商代碼繳費"
+
+  = radio_button_tag :payment_type, "2"
+  = label :payment_type, "ATM/WEBATM 轉帳繳費"
+
+  = radio_button_tag :payment_type, "3"
+  = label :payment_type, "信用卡繳費"
+
+div.payment_type
+  h2
+    |付款金額
+    br
+    div#payment_cal
+
+
 = form_for @order do |f|
   = f.hidden_field :user_id, :value => "#{current_user.id}"
   = f.hidden_field :product_id, :value => "#{@product.id}"
+  = f.hidden_field :payment_type, :id => "payment_type_target"
   = f.submit '前往付款頁面'
+
+javascript:
+  document.getElementById("payment_cal").innerHTML = #{@product.price} + 20;
+  document.getElementById("payment_type_target").value = "BARCODE";
+
+  function update_payment() {
+    var type = document.querySelector('input[name="payment_type"]:checked').value;
+    var cal_value;
+    var type_value;
+    if (type == 0) {
+      cal_value = #{@product.price} + 20;
+      type_value = "BARCODE"; 
+    }
+    else if (type == 1) {
+      cal_value = #{@product.price} + 28;
+      type_value = "CVS"; 
+    }
+    else if (type == 2) {
+      cal_value = #{@product.price};
+      type_value = "ATM"; 
+    }
+    else if (type == 3) {
+      cal_value = #{@product.price};
+      type_value = "CREDIT"; 
+    }
+    document.getElementById("payment_cal").innerHTML = cal_value;
+    document.getElementById("payment_type_target").value = type_value;
+  }
+

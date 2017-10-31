@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171013103544) do
+ActiveRecord::Schema.define(version: 20171031104002) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20171013103544) do
     t.string "aasm_state", default: "created"
     t.string "status"
     t.string "message"
+    t.string "payment_type"
     t.index ["product_id"], name: "index_orders_on_product_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
