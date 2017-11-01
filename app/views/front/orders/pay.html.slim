@@ -15,12 +15,12 @@ h1 瀏覽器將自動跳轉至支付頁面
   = hidden_field_tag 'ItemDesc', @order.product.title
   = hidden_field_tag 'Email', @email
   = hidden_field_tag 'LoginType', @config.login_type
-  = hidden_field_tag 'CREDIT', @credit
-  = hidden_field_tag 'UNIONPAY', @credit
-  = hidden_field_tag 'WEBATM', @atm
-  = hidden_field_tag 'VACC', @atm
-  = hidden_field_tag 'CVS', @cvs
-  = hidden_field_tag 'BARCODE', @barcode
+  = hidden_field_tag 'CREDIT', @order.payment_type.credit
+  = hidden_field_tag 'UNIONPAY', @order.payment_type.credit
+  = hidden_field_tag 'WEBATM', @order.payment_type.atm
+  = hidden_field_tag 'VACC', @order.payment_type.atm
+  = hidden_field_tag 'CVS', @order.payment_type.cvs
+  = hidden_field_tag 'BARCODE', @order.payment_type.barcode
   = hidden_field_tag 'ReturnURL', @config.return_url
   /= hidden_field_tag 'NotifyURL', @config.notify_url
 

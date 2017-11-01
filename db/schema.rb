@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171031104002) do
+ActiveRecord::Schema.define(version: 20171101063816) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20171031104002) do
     t.string "aasm_state", default: "created"
     t.string "status"
     t.string "message"
-    t.string "payment_type"
+    t.integer "payment_type_id"
     t.index ["product_id"], name: "index_orders_on_product_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -76,10 +76,7 @@ ActiveRecord::Schema.define(version: 20171031104002) do
     t.string "respond_type", default: "JSON"
     t.string "lang_type", default: "zh-tw"
     t.string "login_type", default: "0"
-    t.string "credit", default: "1"
-    t.string "cvs", default: "1"
-    t.string "barcode", default: "1"
-    t.string "version", default: "1,4"
+    t.string "version", default: "1.4"
     t.string "production_api", default: "https://core.spgateway.com/MPG/mpg_gateway"
     t.string "staging_api", default: "https://ccore.spgateway.com/MPG/mpg_gateway"
     t.datetime "created_at", null: false
@@ -88,6 +85,20 @@ ActiveRecord::Schema.define(version: 20171031104002) do
     t.string "staging_return_url", default: "http://dev.looplus.com.tw:7122/user/show"
     t.string "production_notify_url", default: "https://www.looplus.com.tw/orders/notify"
     t.string "staging_notify_url", default: "http://dev.looplus.com.tw:7122/orders/notify"
+  end
+
+  create_table "payment_types", force: :cascade do |t|
+    t.string "name"
+    t.string "argu_name"
+    t.float "fee"
+    t.float "addon_fee"
+    t.text "description"
+    t.integer "barcode"
+    t.integer "cvs"
+    t.integer "atm"
+    t.integer "credit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|

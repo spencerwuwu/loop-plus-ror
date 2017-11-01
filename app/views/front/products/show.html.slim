@@ -37,12 +37,12 @@ div.payment_type
 = form_for @order do |f|
   = f.hidden_field :user_id, :value => "#{current_user.id}"
   = f.hidden_field :product_id, :value => "#{@product.id}"
-  = f.hidden_field :payment_type, :id => "payment_type_target"
+  = f.hidden_field :payment_type_id, :id => "payment_type_target"
   = f.submit '前往付款頁面'
 
 javascript:
   document.getElementById("payment_cal").innerHTML = #{@product.price} + 20;
-  document.getElementById("payment_type_target").value = "BARCODE";
+  document.getElementById("payment_type_target").value = "1";
 
   function update_payment() {
     var type = document.querySelector('input[name="payment_type"]:checked').value;
@@ -50,19 +50,19 @@ javascript:
     var type_value;
     if (type == 0) {
       cal_value = #{@product.price} + 20;
-      type_value = "BARCODE"; 
+      type_value = "1"; 
     }
     else if (type == 1) {
       cal_value = #{@product.price} + 28;
-      type_value = "CVS"; 
+      type_value = "2"; 
     }
     else if (type == 2) {
       cal_value = #{@product.price};
-      type_value = "ATM"; 
+      type_value = "3"; 
     }
     else if (type == 3) {
       cal_value = #{@product.price};
-      type_value = "CREDIT"; 
+      type_value = "4"; 
     }
     document.getElementById("payment_cal").innerHTML = cal_value;
     document.getElementById("payment_type_target").value = type_value;

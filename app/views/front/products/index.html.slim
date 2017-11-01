@@ -1,6 +1,10 @@
 - content_for(:title) { '儲值點數' }
 
-- @products.each do |product|
-  = link_to product_path(product)
-    = product.title
+- if user_signed_in?
+  - @products.each do |product|
+    = link_to product_path(product)
+      = product.title
+
+- else
+  |請先登入
 

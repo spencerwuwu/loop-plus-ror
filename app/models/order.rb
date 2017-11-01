@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
   belongs_to :product
+  belongs_to :payment_type
   belongs_to :user
   resourcify
 
@@ -56,29 +57,7 @@ class Order < ApplicationRecord
   def get_raw(order, config, email)
     str = "MerchantID=#{config.merchant_id}&Version=#{config.version}&RespondType=#{config.respond_type}&TimeStamp=#{timestamp}&LangType=#{config.lang_type}&MerchantOrderNo=#{merchant_order_no}&Amt=#{order.product.price}&ItemDesc=#{order.product.title}&Email=#{email}&LoginType=#{config.login_type}&ReturnURL=#{config.return_url}"
 
-    if order.payment_type == "BARCODE"
-      barcode = 1
-      cvs = 0
-      atm = 0
-      credit = 0
-    elsif order.payment_type == "CVS"
-      barcode = 0
-      cvs = 1
-      credit = 0
-      atm = 0
-    elsif order.payment_type == "ATM"
-      barcode = 0
-      cvs = 0
-      atm = 1
-      credit = 0
-    else
-      barcode = 0
-      cvs = 0
-      atm = 0
-      credit = 1
-    end
-
-    type = "&CREDIT=#{credit}&CVS=#{cvs}&BARCODE=#{barcode}&UNIONPAY=#{credit}&WEBATM=#{atm}&VACC=#{atm}"
+    type = "&CREDIT=#{order.payment_type.credit}&CVS=#{order.payment_type.cvs}&BARCODE=#{order.payment_type.barcode}&UNIONPAY=#{order.payment_type.credit}&WEBATM=#{order.payment_type.atm}&VACC=#{order.payment_type.atm}"
 
     return str + type
   end
