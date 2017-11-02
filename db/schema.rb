@@ -63,6 +63,8 @@ ActiveRecord::Schema.define(version: 20171101063816) do
     t.string "status"
     t.string "message"
     t.integer "payment_type_id"
+    t.integer "payment_price"
+    t.float "income"
     t.index ["product_id"], name: "index_orders_on_product_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end

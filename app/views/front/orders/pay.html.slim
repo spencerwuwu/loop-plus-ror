@@ -11,7 +11,7 @@ h1 瀏覽器將自動跳轉至支付頁面
   = hidden_field_tag 'TimeStamp', @order.timestamp
   = hidden_field_tag 'LangType', @config.lang_type
   = hidden_field_tag 'MerchantOrderNo', @order.merchant_order_no
-  = hidden_field_tag 'Amt', @order.product.price
+  = hidden_field_tag 'Amt', @order.payment_price
   = hidden_field_tag 'ItemDesc', @order.product.title
   = hidden_field_tag 'Email', @email
   = hidden_field_tag 'LoginType', @config.login_type

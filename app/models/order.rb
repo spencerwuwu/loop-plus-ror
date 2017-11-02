@@ -55,7 +55,7 @@ class Order < ApplicationRecord
 
 
   def get_raw(order, config, email)
-    str = "MerchantID=#{config.merchant_id}&Version=#{config.version}&RespondType=#{config.respond_type}&TimeStamp=#{timestamp}&LangType=#{config.lang_type}&MerchantOrderNo=#{merchant_order_no}&Amt=#{order.product.price}&ItemDesc=#{order.product.title}&Email=#{email}&LoginType=#{config.login_type}&ReturnURL=#{config.return_url}"
+    str = "MerchantID=#{config.merchant_id}&Version=#{config.version}&RespondType=#{config.respond_type}&TimeStamp=#{timestamp}&LangType=#{config.lang_type}&MerchantOrderNo=#{merchant_order_no}&Amt=#{order.payment_price}&ItemDesc=#{order.product.title}&Email=#{email}&LoginType=#{config.login_type}&ReturnURL=#{config.return_url}"
 
     type = "&CREDIT=#{order.payment_type.credit}&CVS=#{order.payment_type.cvs}&BARCODE=#{order.payment_type.barcode}&UNIONPAY=#{order.payment_type.credit}&WEBATM=#{order.payment_type.atm}&VACC=#{order.payment_type.atm}"
 

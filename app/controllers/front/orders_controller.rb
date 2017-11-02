@@ -2,6 +2,16 @@ class Front::OrdersController < ApplicationController
   def create
     order_params = params.require(:order).permit(:user_id, :product_id, :payment_type_id)
     order = Order.new(order_params)
+
+      order.payment_price = order.product.price + order.payment_type.addon_fee
+    if order.payment_type_id == 1
+      order.income = order.product.price
+    elsif order.payment_type_id == 2
+      order.income = order.product.price
+    else
+      order.income = order.product.price * (1 - order.payment_fee)
+    end
+
     if order.save
       redirect_to pay_order_path(order)
     else
